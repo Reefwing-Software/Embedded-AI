@@ -13,9 +13,19 @@ $$
 <br>
 
 <!-- Mean Squared Error (MSE) Cost Function in Linear Regression -->
-\[
+$$
 J(\beta) = \frac{1}{m} \sum_{i=1}^{m} \left( h_{\beta}(x^{(i)}) - y^{(i)} \right)^2 
-\]
+$$
+
+$$
+\begin{flushleft}
+\textbf{Where:} \\
+$m$ is the number of observations (data points), \\
+$h_{\beta}(x^{(i)})$ is the predicted value of $y$ for the $i$-th data point, \\
+$y^{(i)}$ is the actual observed value of $y$ for the $i$-th data point, \\
+$\beta$ represents the coefficients (parameters) of the linear regression model.
+\end{flushleft}
+$$
 
 <br>
 
