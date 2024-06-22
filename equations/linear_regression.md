@@ -37,7 +37,7 @@ $$
 $$
 \begin{aligned}
 &\mathbf{\beta} \quad \text{is the vector of coefficients (parameters) we are solving for.}\\
-&\mathbf{X} \quad \text{is the matrix of input features, where each row represents an instance and each column represents a feature.}\\
+&\mathbf{X} \quad \text{matrix of input features, each row is an instance and each column is a feature.}\\
 &\mathbf{y} \quad \text{is the vector of target values.}\\
 &\mathbf{X}^T \quad \text{is the transpose of the matrix } \mathbf{X}.\\
 &(\mathbf{X}^T \mathbf{X})^{-1} \quad \text{is the inverse of the matrix product } \mathbf{X}^T \mathbf{X}.
