@@ -13,9 +13,9 @@ graph LR
     D --> E[Train the Model]
 ```
        
-    <br>
 
 ```mermaid
+graph LR
     E --> F[Evaluate the Model]
     F --> G[Tune the Model]
     G --> H[Deploy the Model]
