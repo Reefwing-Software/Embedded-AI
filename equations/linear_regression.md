@@ -6,9 +6,9 @@
 -->
 
 <!-- Linear Regression hypothesis -->
-\[
+$$
 Y = \beta_0 + \beta_1 X
-\]
+$$
 
 <br>
 
