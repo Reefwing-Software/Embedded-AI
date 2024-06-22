@@ -8,6 +8,7 @@
 ```mermaid
 graph LR
     subgraph ML Process
+        graph LR
         A[Define the Problem] --> B[Collect Data]
         B --> C[Prepare Data]
         C --> D[Select a Model]
