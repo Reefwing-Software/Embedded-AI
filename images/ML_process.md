@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-:::mermaid
+```mermaid
 flowchart LR
     subgraph Machine Learning Process
         direction LR
@@ -25,4 +25,4 @@ flowchart LR
         end
     end
     Engineering --> Evaluation
-:::
+```
