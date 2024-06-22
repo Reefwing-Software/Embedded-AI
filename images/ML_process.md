@@ -11,9 +11,11 @@ graph LR
     B --> C[Prepare Data]
     C --> D[Select a Model]
     D --> E[Train the Model]
+```
        
     <br>
 
+```mermaid
     E --> F[Evaluate the Model]
     F --> G[Tune the Model]
     G --> H[Deploy the Model]
