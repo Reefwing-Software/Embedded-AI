@@ -7,14 +7,12 @@
 
 ```mermaid
 graph LR
-    subgraph ML Process
-        A[Define the Problem] --> B[Collect Data]
-        B --> C[Prepare Data]
-        C --> D[Select a Model]
-        D --> E[Train the Model]
-        E --> F[Evaluate the Model]
-        F --> G[Tune the Model]
-        G --> H[Deploy the Model]
-        H --> I[Monitor and Maintain]
-    end
+    A[Define the Problem] --> B[Collect Data]
+    B --> C[Prepare Data]
+    C --> D[Select a Model]
+    D --> E[Train the Model]
+    E --> F[Evaluate the Model]
+    F --> G[Tune the Model]
+    G --> H[Deploy the Model]
+    H --> I[Monitor and Maintain]
 ```
