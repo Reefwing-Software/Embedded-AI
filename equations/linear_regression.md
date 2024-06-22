@@ -27,3 +27,15 @@ y^{(i)} &\text{ is the actual observed value of } y \text{ for the } i\text{-th 
 \beta &\text{ represents the coefficients (parameters) of the linear regression model}.
 \end{aligned}
 $$
+
+<!-- Normal Equation used to train Linear Regression -->
+
+$$
+\mathbf{\beta} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
+$$
+
+- \(\mathbf{\beta}\) is the vector of coefficients (parameters) we are solving for.
+- \(\mathbf{X}\) is the matrix of input features, where each row represents an instance and each column represents a feature.
+- \(\mathbf{y}\) is the vector of target values.
+- \(\mathbf{X}^T\) is the transpose of the matrix \(\mathbf{X}\).
+- \((\mathbf{X}^T \mathbf{X})^{-1}\) is the inverse of the matrix product \(\mathbf{X}^T \mathbf{X}\).
