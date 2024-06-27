@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-:::mermaid
+```mermaid
 graph LR
     subgraph Input Layer
         direction TB
