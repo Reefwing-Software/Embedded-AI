@@ -5,9 +5,9 @@
  https://opensource.org/licenses/MIT
 -->
 
-:::mermaid
+'''mermaid
 graph LR
-    %%{ init: { 'flowchart': { 'curve': 'linear' } } }%%
+    
     %% Input Layer
     A1(Input 1)
     A2(Input 2)
