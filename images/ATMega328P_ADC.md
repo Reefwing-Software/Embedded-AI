@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-:::mermaid
+'''mermaid
 graph TB
     %%{ init: { 'flowchart': { 'curve': 'linear' } } }%%
     AI0 --> M0
