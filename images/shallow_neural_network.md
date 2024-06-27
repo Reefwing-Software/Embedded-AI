@@ -7,20 +7,25 @@
 
 ```mermaid
 graph LR
-    %%{ init: { 'flowchart': { 'curve': 'linear' } } }%%
-    %% Input Layer
-    A1(Input 1)
-    A2(Input 2)
-    A3(Input 3)
-    A4(Input 4)
+    subgraph Input Layer
+        direction TB
+        A1(<i>x1</i>)
+        A2(<i>x2</i>)
+        A3(<i>x3</i>)
+        A4(<i>x4</i>)
+    end
     
-    %% Hidden Layer
-    B1(Hidden 1)
-    B2(Hidden 2)
-    B3(Hidden 3)
+    subgraph Hidden Layer
+        direction TB
+        B1(<i>a1</i>)
+        B2(<i>a2</i>)
+        B3(<i>a3</i>)
+    end
     
-    %% Output Layer
-    C1(Output)
+    subgraph Output Layer
+        direction TB
+        C1(<BR><i>y1</i><BR><BR>)
+    end
     
     %% Connections
     A1 --> B1
@@ -38,3 +43,4 @@ graph LR
     B1 --> C1
     B2 --> C1
     B3 --> C1
+    C1 --> SOC(SOC)
