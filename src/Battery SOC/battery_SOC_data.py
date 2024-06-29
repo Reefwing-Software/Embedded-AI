@@ -57,33 +57,79 @@ print("Shape of train_data_full['Y']: ", train_data_full['Y'].shape)
 print("Shape of test_data_full_n10deg['X']: ", test_data_full_n10deg['X'].shape)
 print("Shape of test_data_full_n10deg['Y']: ", test_data_full_n10deg['Y'].shape)
 
-# Resample the data sets to have one data point every 100 seconds, and compute moving averages
-def helper_moving_average(df):
-    df = df.iloc[::100, :]
-    df["AverageVoltage"] = df["Voltage"].rolling(window=6, min_periods=1).mean()
-    df["AverageCurrent"] = df["Current"].rolling(window=6, min_periods=1).mean()
-    df = df[["Voltage", "Current", "Temperature", "SOC", "AverageVoltage", "AverageCurrent"]]
-    return df
+# Extract X and Y from train_data_full
+X_train = train_data_full['X']
+Y_train = train_data_full['Y']
 
-def process_data(X, Y, idx):
-    print("Processing data with index range:", idx)
-    print("Shape of X:", X.shape)
-    print("Shape of Y:", Y.shape)
-    df = pd.DataFrame(np.vstack((X[:, idx], Y[idx])).T, columns=["Voltage", "Current", "Temperature", "SOC"])
-    return helper_moving_average(df)
+# Define the index ranges
+idx0 = slice(0, 184257)
+idx10 = slice(184257, 337973)
+idx25 = slice(337973, 510530)
+idxN10 = slice(510530, 669956)
 
-idx0 = np.arange(0, 184257)
-idx10 = np.arange(184258, 337973)
-idx25 = np.arange(337974, 510530)
-idxN10 = np.arange(510531, 669956)
+# Extract data segments
+X_idx0 = X_train[:, idx0]
+Y_idx0 = Y_train[:, idx0]
 
-train_data_0deg = process_data(train_data_full['X'], train_data_full['Y'], idx0)
-train_data_10deg = process_data(train_data_full['X'], train_data_full['Y'], idx10)
-train_data_25deg = process_data(train_data_full['X'], train_data_full['Y'], idx25)
-train_data_n10deg = process_data(train_data_full['X'], train_data_full['Y'], idxN10)
-train_data = pd.concat([train_data_0deg, train_data_10deg, train_data_25deg, train_data_n10deg])
+X_idx10 = X_train[:, idx10]
+Y_idx10 = Y_train[:, idx10]
 
-test_data_n10deg = helper_moving_average(pd.DataFrame(np.vstack((test_data_full_n10deg['X'], test_data_full_n10deg['Y'])).T, columns=["Voltage", "Current", "Temperature", "SOC"]))
-test_data_0deg = helper_moving_average(pd.DataFrame(np.vstack((test_data_full_0deg['X'], test_data_full_0deg['Y'])).T, columns=["Voltage", "Current", "Temperature", "SOC"]))
-test_data_10deg = helper_moving_average(pd.DataFrame(np.vstack((test_data_full_10deg['X'], test_data_full_10deg['Y'])).T, columns=["Voltage", "Current", "Temperature", "SOC"]))
-test_data_25deg = helper_moving_average(pd.DataFrame(np.vstack((test_data_full_25deg['X'], test_data_full_25deg['Y'])).T, columns=["Voltage", "Current", "Temperature", "SOC"]))
+X_idx25 = X_train[:, idx25]
+Y_idx25 = Y_train[:, idx25]
+
+X_idxN10 = X_train[:, idxN10]
+Y_idxN10 = Y_train[:, idxN10]
+
+# Print shapes to verify extraction
+print(f'X_idx0 shape: {X_idx0.shape}, Y_idx0 shape: {Y_idx0.shape}')
+print(f'X_idx10 shape: {X_idx10.shape}, Y_idx10 shape: {Y_idx10.shape}')
+print(f'X_idx25 shape: {X_idx25.shape}, Y_idx25 shape: {Y_idx25.shape}')
+print(f'X_idxN10 shape: {X_idxN10.shape}, Y_idxN10 shape: {Y_idxN10.shape}')
+
+# Resample and compute new moving averages
+def resample_and_compute_moving_averages(X, Y, step=100):
+    # Resample the data (take every `step`-th point)
+    X_resampled = X[:, ::step]
+    Y_resampled = Y[:, ::step]
+    
+    # Compute new moving averages
+    avg_voltage_idx = 3  # The 4th row (index 3) is average voltage
+    avg_current_idx = 4  # The 5th row (index 4) is average current
+    
+    # Use a simple moving average (window size = step)
+    new_avg_voltage = np.convolve(X_resampled[0, :], np.ones(step)/step, mode='valid')
+    new_avg_current = np.convolve(X_resampled[1, :], np.ones(step)/step, mode='valid')
+    
+    # Update the resampled X with new moving averages
+    X_resampled[avg_voltage_idx, :len(new_avg_voltage)] = new_avg_voltage
+    X_resampled[avg_current_idx, :len(new_avg_current)] = new_avg_current
+    
+    return X_resampled, Y_resampled
+
+
+# Resample and compute new moving averages for training data
+X_train_resampled, Y_train_resampled = resample_and_compute_moving_averages(X_train, Y_train)
+
+# Extract and resample test data
+X_test_n10deg = test_data_full_n10deg['X']
+Y_test_n10deg = test_data_full_n10deg['Y']
+X_test_n10deg_resampled, Y_test_n10deg_resampled = resample_and_compute_moving_averages(X_test_n10deg, Y_test_n10deg)
+
+X_test_0deg = test_data_full_0deg['X']
+Y_test_0deg = test_data_full_0deg['Y']
+X_test_0deg_resampled, Y_test_0deg_resampled = resample_and_compute_moving_averages(X_test_0deg, Y_test_0deg)
+
+X_test_10deg = test_data_full_10deg['X']
+Y_test_10deg = test_data_full_10deg['Y']
+X_test_10deg_resampled, Y_test_10deg_resampled = resample_and_compute_moving_averages(X_test_10deg, Y_test_10deg)
+
+X_test_25deg = test_data_full_25deg['X']
+Y_test_25deg = test_data_full_25deg['Y']
+X_test_25deg_resampled, Y_test_25deg_resampled = resample_and_compute_moving_averages(X_test_25deg, Y_test_25deg)
+
+# Print shapes to verify resampling
+print(f'Training data shape after resampling: X={X_train_resampled.shape}, Y={Y_train_resampled.shape}')
+print(f'n10degC test data shape after resampling: X={X_test_n10deg_resampled.shape}, Y={Y_test_n10deg_resampled.shape}')
+print(f'0degC test data shape after resampling: X={X_test_0deg_resampled.shape}, Y={Y_test_0deg_resampled.shape}')
+print(f'10degC test data shape after resampling: X={X_test_10deg_resampled.shape}, Y={Y_test_10deg_resampled.shape}')
+print(f'25degC test data shape after resampling: X={X_test_25deg_resampled.shape}, Y={Y_test_25deg_resampled.shape}')
