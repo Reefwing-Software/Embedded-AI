@@ -20,6 +20,9 @@ os.makedirs(output_folder, exist_ok=True)
 # Download and extract the data set
 train_folder = os.path.join(output_folder, "Train")
 test_folder = os.path.join(output_folder, "Test")
+preprocessed_folder = os.path.join(output_folder, 'Preprocessed')
+os.makedirs(preprocessed_folder, exist_ok=True)
+
 if not os.path.exists(train_folder) or not os.path.exists(test_folder):
     print("Downloading LGHG2@n10C_to_25degC.zip (56 MB) ... ")
     download_folder = os.path.dirname(output_folder)
@@ -93,16 +96,19 @@ def resample_and_compute_moving_averages(X, Y, step=100):
     Y_resampled = Y[:, ::step]
     
     # Compute new moving averages
+    n = X_resampled.shape[1]
     avg_voltage_idx = 3  # The 4th row (index 3) is average voltage
     avg_current_idx = 4  # The 5th row (index 4) is average current
     
-    # Use a simple moving average (window size = step)
-    new_avg_voltage = np.convolve(X_resampled[0, :], np.ones(step)/step, mode='valid')
-    new_avg_current = np.convolve(X_resampled[1, :], np.ones(step)/step, mode='valid')
+    new_avg_voltage = np.empty(n)
+    new_avg_current = np.empty(n)
     
-    # Update the resampled X with new moving averages
-    X_resampled[avg_voltage_idx, :len(new_avg_voltage)] = new_avg_voltage
-    X_resampled[avg_current_idx, :len(new_avg_current)] = new_avg_current
+    for i in range(n):
+        new_avg_voltage[i] = np.mean(X_resampled[0, max(0, i-5):i+1])
+        new_avg_current[i] = np.mean(X_resampled[1, max(0, i-5):i+1])
+    
+    X_resampled[avg_voltage_idx, :n] = new_avg_voltage
+    X_resampled[avg_current_idx, :n] = new_avg_current
     
     return X_resampled, Y_resampled
 
@@ -110,26 +116,32 @@ def resample_and_compute_moving_averages(X, Y, step=100):
 # Resample and compute new moving averages for training data
 X_train_resampled, Y_train_resampled = resample_and_compute_moving_averages(X_train, Y_train)
 
+# Create DataFrame and save to CSV
+train_df = pd.DataFrame(np.vstack((X_train_resampled, Y_train_resampled)).T,
+                        columns=['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current', 'SOC'])
+train_df.to_csv(os.path.join(preprocessed_folder, 'resampled_training_data.csv'), index=False)
+
 # Extract and resample test data
-X_test_n10deg = test_data_full_n10deg['X']
-Y_test_n10deg = test_data_full_n10deg['Y']
-X_test_n10deg_resampled, Y_test_n10deg_resampled = resample_and_compute_moving_averages(X_test_n10deg, Y_test_n10deg)
+test_data_files = ['n10degC', '0degC', '10degC', '25degC']
+resampled_test_data_shapes = {}
 
-X_test_0deg = test_data_full_0deg['X']
-Y_test_0deg = test_data_full_0deg['Y']
-X_test_0deg_resampled, Y_test_0deg_resampled = resample_and_compute_moving_averages(X_test_0deg, Y_test_0deg)
-
-X_test_10deg = test_data_full_10deg['X']
-Y_test_10deg = test_data_full_10deg['Y']
-X_test_10deg_resampled, Y_test_10deg_resampled = resample_and_compute_moving_averages(X_test_10deg, Y_test_10deg)
-
-X_test_25deg = test_data_full_25deg['X']
-Y_test_25deg = test_data_full_25deg['Y']
-X_test_25deg_resampled, Y_test_25deg_resampled = resample_and_compute_moving_averages(X_test_25deg, Y_test_25deg)
+for i, test_data_full in enumerate(fds_test):
+    X_test = test_data_full['X']
+    Y_test = test_data_full['Y']
+    X_test_resampled, Y_test_resampled = resample_and_compute_moving_averages(X_test, Y_test)
+    test_df = pd.DataFrame(np.vstack((X_test_resampled, Y_test_resampled)).T,
+                           columns=['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current', 'SOC'])
+    test_df.to_csv(os.path.join(preprocessed_folder, f'resampled_test_data_{test_data_files[i]}.csv'), index=False)
+    resampled_test_data_shapes[test_data_files[i]] = (X_test_resampled.shape, Y_test_resampled.shape)
 
 # Print shapes to verify resampling
 print(f'Training data shape after resampling: X={X_train_resampled.shape}, Y={Y_train_resampled.shape}')
-print(f'n10degC test data shape after resampling: X={X_test_n10deg_resampled.shape}, Y={Y_test_n10deg_resampled.shape}')
-print(f'0degC test data shape after resampling: X={X_test_0deg_resampled.shape}, Y={Y_test_0deg_resampled.shape}')
-print(f'10degC test data shape after resampling: X={X_test_10deg_resampled.shape}, Y={Y_test_10deg_resampled.shape}')
-print(f'25degC test data shape after resampling: X={X_test_25deg_resampled.shape}, Y={Y_test_25deg_resampled.shape}')
+for test_file, shapes in resampled_test_data_shapes.items():
+    print(f'{test_file} test data shape after resampling: X={shapes[0]}, Y={shapes[1]}')
+
+# Combine X and Y into a single DataFrame
+data_resampled = np.vstack((X_train_resampled, Y_train_resampled))
+df_resampled = pd.DataFrame(data_resampled.T, columns=['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current', 'SOC'])
+
+# Display the first 8 rows
+print(df_resampled.head(8).to_string(index=False))
