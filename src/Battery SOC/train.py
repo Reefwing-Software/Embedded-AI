@@ -27,7 +27,7 @@ X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Ave
 y_train = train_df['SOC']
 
 # Define the GPR model with initial kernel
-kernel = C(1.0, (1e-2, 1e2)) * RBF(1.0, (1e-2, 1e2))
+kernel = C(0.5, (0.01, 1.0)) * RBF(0.5, (0.01, 1.0))
 gpr = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=10, random_state=42)
 
 # Create a pipeline with standardization and GPR
