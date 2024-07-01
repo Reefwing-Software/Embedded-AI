@@ -16,7 +16,11 @@ import joblib, os
 np.random.seed(42)
 
 # Define the file paths
-preprocessed_folder = os.path.expanduser("~/Documents/GitHub/Embedded-AI/data/LGHG2@n10C_to_25degC/preprocessed")
+preprocessed_folder = os.path.expanduser("~/Documents/GitHub/Embedded-AI/data/LGHG2@n10C_to_25degC/Preprocessed")
+model_folder = os.path.expanduser("~/Documents/GitHub/Embedded-AI/data/LGHG2@n10C_to_25degC/Model")
+os.makedirs(model_folder, exist_ok=True)
+
+# Define the training data file path (preprocessed)
 train_file = os.path.join(preprocessed_folder, 'resampled_training_data.csv')
 
 # Load the training data
@@ -27,7 +31,7 @@ X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Ave
 y_train = train_df['SOC']
 
 # Define the GPR model with initial kernel
-kernel = C(0.5, (0.01, 1.0)) * RBF(0.5, (0.01, 1.0))
+kernel = C(0.01, (0.001, 0.1)) * RBF(0.5, (0.01, 1.0))
 gpr = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=10, random_state=42)
 
 # Create a pipeline with standardization and GPR
@@ -39,9 +43,9 @@ pipeline = Pipeline([
 # Define the hyperparameter grid to optimize
 param_grid = {
     'gpr__kernel': [
-        C(1.0, (1e-2, 1e2)) * RBF(1.0, (1e-2, 1e2)),
-        C(1.0, (1e-2, 1e2)) * RBF(0.5, (1e-2, 1e2)),
-        C(1.0, (1e-2, 1e2)) * RBF(2.0, (1e-2, 1e2))
+        C(0.01, (0.001, 0.1)) * RBF(0.5, (0.01, 1.0)),
+        C(0.01, (0.001, 0.1)) * RBF(0.25, (0.01, 1.0)),
+        C(0.01, (0.001, 0.1)) * RBF(1.0, (0.01, 1.0))
     ]
 }
 
@@ -56,7 +60,8 @@ print(f"Best parameters found: {grid_search.best_params_}")
 print(f"Best cross-validation score: {grid_search.best_score_}")
 
 # Save the best model
-joblib.dump(grid_search.best_estimator_, 'best_gpr_model.pkl')
+model_file = os.path.join(model_folder, 'best_gpr_model.pkl')
+joblib.dump(grid_search.best_estimator_, model_file)
 
 # Load the best model (example of how to load it later)
-# best_gpr_model = joblib.load('best_gpr_model.pkl')
+# best_gpr_model = joblib.load(model_file)
