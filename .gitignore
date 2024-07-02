@@ -1,2 +1,3 @@
 
 src/Battery SOC/__pycache__/train.cpython-311.pyc
+data/LGHG2@n10C_to_25degC/Model/best_gpr_model.pkl
