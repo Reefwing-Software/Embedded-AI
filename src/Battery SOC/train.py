@@ -10,7 +10,13 @@ from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from scipy.optimize import fmin_l_bfgs_b
 import joblib, os, time
+
+# Custom optimizer function to include max_iter
+def custom_optimizer(obj_func, initial_theta, bounds):
+    result = fmin_l_bfgs_b(obj_func, initial_theta, bounds=bounds, maxiter=20000)
+    return result[0], result[1]
 
 # Start the timer for the complete script
 start_time = time.time()
@@ -33,7 +39,7 @@ y_train = train_df['SOC']
 # Define the GPR model with initial kernel - TRIAL 3
 # Adjust bounds based on previous trials' results
 kernel = C(0.1, (0.1, 1.0)) * RBF(0.5, (0.001, 0.1))
-gpr = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=10, optimizer='fmin_l_bfgs_b', max_iter=10000, random_state=42)
+gpr = GaussianProcessRegressor(kernel=kernel, optimizer=custom_optimizer, n_restarts_optimizer=10, random_state=42)
 
 # Create a pipeline with standardization and GPR
 pipeline = Pipeline([
