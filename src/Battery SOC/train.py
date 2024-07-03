@@ -6,7 +6,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
+from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C, WhiteKernel
 from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -36,9 +36,9 @@ train_df = pd.read_csv(train_file)
 X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current']]
 y_train = train_df['SOC']
 
-# Define the GPR model with initial kernel - TRIAL 3
+# Define the GPR model with initial kernel - TRIAL 4
 # Adjust bounds based on previous trials' results
-kernel = C(0.1, (0.1, 1.0)) * RBF(0.5, (0.001, 0.1))
+kernel = C(0.1, (0.1, 1.0)) * RBF(0.5, (0.001, 0.1)) + WhiteKernel(noise_level=1.0, noise_level_bounds=(1e-5, 1e1))
 gpr = GaussianProcessRegressor(kernel=kernel, optimizer=custom_optimizer, n_restarts_optimizer=10, random_state=42)
 
 # Create a pipeline with standardization and GPR
@@ -52,7 +52,8 @@ param_grid = {
     'gpr__kernel': [
         C(0.1, (0.1, 1.0)) * RBF(0.5, (0.001, 0.1)),
         C(0.1, (0.1, 1.0)) * RBF(0.25, (0.001, 0.1)),
-        C(0.1, (0.1, 1.0)) * RBF(1.0, (0.001, 0.1))
+        C(0.1, (0.1, 1.0)) * RBF(1.0, (0.001, 0.1)),
+        C(0.1, (0.1, 1.0)) * RBF(0.5, (0.001, 0.1)) + WhiteKernel(noise_level=1.0, noise_level_bounds=(1e-5, 1e1))
     ]
 }
 
@@ -77,6 +78,19 @@ print(f"Best cross-validation score: {grid_search.best_score_}")
 # Print the actual parameter values of the best model
 best_kernel = grid_search.best_estimator_.named_steps['gpr'].kernel_
 print(f"Actual parameters of the best kernel: {best_kernel}")
+
+# Verify the application of StandardScaler
+scaler = grid_search.best_estimator_.named_steps['scaler']
+print(f"Scaler mean: {scaler.mean_}")
+print(f"Scaler var: {scaler.var_}")
+
+# Verify the transformation on a small sample of data
+sample_data = X_train.iloc[:5]
+transformed_sample_data = scaler.transform(sample_data)
+print("Original sample data:")
+print(sample_data)
+print("Transformed sample data:")
+print(transformed_sample_data)
 
 # Save the best model
 model_file = os.path.join(model_folder, 'best_gpr_model.pkl')
