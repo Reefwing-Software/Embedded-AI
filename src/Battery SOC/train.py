@@ -30,7 +30,7 @@ train_df = pd.read_csv(train_file)
 X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current']]
 y_train = train_df['SOC']
 
-# Define the GPR model with initial kernel
+# Define the GPR model with initial kernel - TRIAL 3
 # Adjust bounds based on previous trials' results
 kernel = C(0.1, (0.1, 1.0)) * RBF(0.5, (0.001, 0.1))
 gpr = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=10, optimizer='fmin_l_bfgs_b', max_iter=10000, random_state=42)
