@@ -3,7 +3,7 @@
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
 
-import numpy as np
+
 import pandas as pd
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C, WhiteKernel
@@ -13,9 +13,22 @@ from sklearn.preprocessing import StandardScaler
 from scipy.optimize import fmin_l_bfgs_b
 import joblib, os, time
 
+# Define the hyperparameters in a configuration dictionary for each Trial
+config = {
+    'trial': 3,
+    'initial_constant_value': 0.4,
+    'constant_bounds': (0.1, 1.0),
+    'initial_length_scales': [0.001, 0.002, 0.005],
+    'length_scale_bounds': (0.001, 0.1),
+    'max_iter': 20000,
+    'n_restarts_optimizer': 10,
+    'cv_folds': 5
+}
+
+
 # Custom optimizer function to include max_iter
 def custom_optimizer(obj_func, initial_theta, bounds):
-    result = fmin_l_bfgs_b(obj_func, initial_theta, bounds=bounds, maxiter=20000)
+    result = fmin_l_bfgs_b(obj_func, initial_theta, bounds=bounds, maxiter=config['max_iter'])
     return result[0], result[1]
 
 # Start the timer for the complete script
@@ -37,9 +50,8 @@ X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Ave
 y_train = train_df['SOC']
 
 # Define the GPR model with initial kernel - TRIAL 3
-# Adjust bounds based on previous trials' results
-kernel = C(0.4, (0.1, 1.0)) * RBF(0.001, (0.001, 0.1))
-gpr = GaussianProcessRegressor(kernel=kernel, optimizer=custom_optimizer, n_restarts_optimizer=10, random_state=42)
+kernel = C(config['initial_constant_value'], config['constant_bounds']) * RBF(config['initial_length_scales'][0], config['length_scale_bounds'])
+gpr = GaussianProcessRegressor(kernel=kernel, optimizer=custom_optimizer, n_restarts_optimizer=config['n_restarts_optimizer'], random_state=42)
 
 # Create a pipeline with standardization and GPR
 pipeline = Pipeline([
@@ -50,14 +62,13 @@ pipeline = Pipeline([
 # Define the hyperparameter grid to optimize
 param_grid = {
     'gpr__kernel': [
-        C(0.4, (0.1, 1.0)) * RBF(0.001, (0.001, 0.1)),
-        C(0.4, (0.1, 1.0)) * RBF(0.002, (0.001, 0.1)),
-        C(0.4, (0.1, 1.0)) * RBF(0.005, (0.001, 0.1))
+        C(config['initial_constant_value'], config['constant_bounds']) * RBF(length_scale, config['length_scale_bounds'])
+        for length_scale in config['initial_length_scales']
     ]
 }
 
 # Set up the grid search with cross-validation
-grid_search = GridSearchCV(pipeline, param_grid, cv=5, n_jobs=-1, verbose=2)
+grid_search = GridSearchCV(pipeline, param_grid, cv=config['cv_folds'], n_jobs=-1, verbose=2)
 
 # Start the timer for the grid search
 grid_search_start_time = time.time()
@@ -99,6 +110,11 @@ joblib.dump(grid_search.best_estimator_, model_file)
 total_elapsed_time = time.time() - start_time
 total_minutes, total_seconds = divmod(total_elapsed_time, 60)
 print(f"Total script execution time: {int(total_minutes)} minutes and {total_seconds:.2f} seconds")
+
+# Print out the hyperparameters used in this trial
+print("\nHyperparameters used in this trial:")
+for key, value in config.items():
+    print(f"{key}: {value}")
 
 # Load the best model (example of how to load it later)
 # best_gpr_model = joblib.load(model_file)
