@@ -34,7 +34,7 @@ class ExponentialKernel(Kernel):
 
     @property
     def hyperparameter_length_scale(self):
-        return Kernel.hyperparameter_length_scale
+        return (self.length_scale, "fixed")
 
 # Example usage in GPR
 import pandas as pd
@@ -61,7 +61,7 @@ config = {
     'max_iter': 20000,
     'n_restarts_optimizer': 10,
     'cv_folds': 5,
-    'standardize': False
+    'standardize': True
 }
 
 # Custom optimizer function to include max_iter
@@ -87,7 +87,7 @@ train_df = pd.read_csv(train_file)
 X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current']]
 y_train = train_df['SOC']
 
-# Define the GPR model with initial kernel for Trial 4
+# Define the GPR model with initial kernel for Trial 6
 kernel = C(config['initial_constant_value'], config['constant_bounds']) * ExponentialKernel(config['initial_length_scales'][0])
 gpr = GaussianProcessRegressor(kernel=kernel, optimizer=custom_optimizer, n_restarts_optimizer=config['n_restarts_optimizer'], random_state=42)
 
