@@ -7,9 +7,18 @@ from sklearn.gaussian_process.kernels import Kernel
 from sklearn.utils.validation import check_array
 import numpy as np
 
+from sklearn.gaussian_process.kernels import Kernel, Hyperparameter
+from sklearn.utils.validation import check_array
+import numpy as np
+
 class ExponentialKernel(Kernel):
-    def __init__(self, length_scale=1.0):
+    def __init__(self, length_scale=0.0001, length_scale_bounds=(0.0001, 0.01)):
         self.length_scale = length_scale
+        self.length_scale_bounds = length_scale_bounds
+
+    @property
+    def hyperparameter_length_scale(self):
+        return Hyperparameter("length_scale", "numeric", self.length_scale_bounds)
 
     def __call__(self, X, Y=None, eval_gradient=False):
         X = check_array(X)
@@ -31,10 +40,6 @@ class ExponentialKernel(Kernel):
 
     def is_stationary(self):
         return True
-
-    @property
-    def hyperparameter_length_scale(self):
-        return (self.length_scale, "fixed")
 
 # Example usage in GPR
 import pandas as pd
