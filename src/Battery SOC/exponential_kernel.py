@@ -17,13 +17,12 @@ import pandas as pd
 import joblib, os, time
 
 # Define the hyperparameters in a configuration dictionary for Trial 6
-# Define the hyperparameters in a configuration dictionary for Trial 7
 config = {
     'trial': 6,
     'initial_constant_value': 0.199809,  # Squared value of 0.447
     'constant_bounds': (0.01, 1.0),  # Lower bound adjusted to 0.01
-    'initial_length_scales': [0.001, 0.002, 0.05],  # Positive initial length scales
-    'length_scale_bounds': (0.001, 1.0),  # Positive bounds for length scales
+    'initial_length_scales': [0.0001, 0.001, 0.01],  # Positive initial length scales
+    'length_scale_bounds': (0.0001, 1.0),  # Positive bounds for length scales
     'max_iter': 30000,  # Increasing max_iter to allow more iterations for optimization
     'n_restarts_optimizer': 15,  # Increasing the number of restarts for more thorough optimization
     'cv_folds': 5,  # Keeping the same number of cross-validation folds
