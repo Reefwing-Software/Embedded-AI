@@ -14,7 +14,7 @@
 
 # Summary of Hyperparameter Tuning Trials 1 - 4
 
-| Trial Number | Initial Constant (\(C\)) | Optimized Constant (\(C\)) | Constant Bounds      | Initial Length (\(l\)) | Optimized Length (\(l\)) | RBF Bounds     | Best Cross-Validation Score (\( R^2 \)) | Execution Time (minutes:seconds)                       | Notes                                        |
+| Trial Number | Initial Constant (\(C\)) | Optimized Constant (\(C\)) | Constant Bounds      | Initial Length (\(l\)) | Optimized Length (\(l\)) | RBF/Exp Bounds     | Best Cross-Validation Score (\( R^2 \)) | Execution Time (minutes:seconds)                       | Notes                                        |
 |--------------|---------------------------|----------------------------|----------------------|------------------------|--------------------------|----------------|----------------------------------------|-----------------------------------------------|----------------------------------------------|
 | 1            | 0.01                      | 0.01                       | (0.001, 0.1)         | 0.5                    | 0.5                      | (0.01, 1.0)    | -1102.22                               | 15:33.09                                      | Initial configuration                         |
 | 2            | 0.01                      | 0.423401                   | (0.1, 1.0)           | 0.25                   | 0.00249                  | (0.001, 0.1)   | -1.75                                  | 344:46.89                                     | Adjusted Constant and RBF bounds. |
