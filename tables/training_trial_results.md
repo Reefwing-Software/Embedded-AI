@@ -20,6 +20,6 @@
 | 2            | 0.01                      | 0.423401                   | (0.1, 1.0)           | 0.25                   | 0.00249                  | (0.001, 0.1)   | -1.75                                  | 344:46.89                                     | Adjusted Constant and RBF bounds. |
 | 3            | 0.4                       | 0.423401                   | (0.1, 1.0)           | 0.001                  | 0.00249                  | (0.001, 0.1)   | -1.75                                  | 356:44.66                                     | Increased max_iter, initial values and adjusted bounds.        |
 | 4            | 0.4                       |    1.0    | (0.1, 1.0)                  | 0.001   | 0.001                        | (0.001, 0.1)                    | -2.25                                    | 135:03.62                                   | Removed StandardScaler from the pipeline.     |
-| 5            | 0.4                       | 0.423801       | (0.1, 1.0)                 | 0.0005 | 0.00249                      | (0.0001, 0.1)                  | -1.75                                    | 373:41.44                                   | Reintroduced StandardScaler, expanded lower length scale bound |
+| 5            | 0.423401                  | 0.199809       | (0.1, 1.0)                 | 0.0001| -4.61                      | (0.0001, 0.01)                  | -0.63                                    | 261:17.58                                   | ExponentialKernel, significantly improved cross-validation score |
 
 
