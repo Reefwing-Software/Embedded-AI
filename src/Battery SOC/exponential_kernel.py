@@ -3,16 +3,35 @@
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
 
-from sklearn.gaussian_process.kernels import Kernel
-from sklearn.utils.validation import check_array
-import numpy as np
-
 from sklearn.gaussian_process.kernels import Kernel, Hyperparameter
 from sklearn.utils.validation import check_array
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import ConstantKernel as C
+from sklearn.model_selection import GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from scipy.optimize import fmin_l_bfgs_b
+
 import numpy as np
+import pandas as pd
+import joblib, os, time
+
+# Define the hyperparameters in a configuration dictionary for Trial 6
+# Define the hyperparameters in a configuration dictionary for Trial 7
+config = {
+    'trial': 6,
+    'initial_constant_value': 0.199809,  # Squared value of 0.447
+    'constant_bounds': (0.01, 1.0),  # Lower bound adjusted to 0.01
+    'initial_length_scales': [0.001, 0.002, 0.05],  # Positive initial length scales
+    'length_scale_bounds': (0.001, 1.0),  # Positive bounds for length scales
+    'max_iter': 30000,  # Increasing max_iter to allow more iterations for optimization
+    'n_restarts_optimizer': 15,  # Increasing the number of restarts for more thorough optimization
+    'cv_folds': 5,  # Keeping the same number of cross-validation folds
+    'standardize': True  # Keeping standardization
+}
 
 class ExponentialKernel(Kernel):
-    def __init__(self, length_scale=0.0001, length_scale_bounds=(0.0001, 0.01)):
+    def __init__(self, length_scale, length_scale_bounds):
         self.length_scale = length_scale
         self.length_scale_bounds = length_scale_bounds
 
@@ -41,34 +60,6 @@ class ExponentialKernel(Kernel):
     def is_stationary(self):
         return True
 
-# Example usage in GPR
-import pandas as pd
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import ConstantKernel as C
-from sklearn.model_selection import GridSearchCV
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
-from scipy.optimize import fmin_l_bfgs_b
-import joblib
-import os
-import time
-
-# Set the random seed for reproducibility
-np.random.seed(42)
-
-# Define the hyperparameters in a configuration dictionary for Trial 6
-config = {
-    'trial': 6,
-    'initial_constant_value': 0.423401,  # Based on actual optimized value from Trial 3
-    'constant_bounds': (0.1, 1.0),
-    'initial_length_scales': [0.0001, 0.0002, 0.0005],
-    'length_scale_bounds': (0.0001, 0.01),  # Expanded lower bound
-    'max_iter': 20000,
-    'n_restarts_optimizer': 10,
-    'cv_folds': 5,
-    'standardize': True
-}
-
 # Custom optimizer function to include max_iter
 def custom_optimizer(obj_func, initial_theta, bounds):
     result = fmin_l_bfgs_b(obj_func, initial_theta, bounds=bounds, maxiter=config['max_iter'])
@@ -92,26 +83,26 @@ train_df = pd.read_csv(train_file)
 X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current']]
 y_train = train_df['SOC']
 
-# Define the GPR model with initial kernel for Trial 6
-kernel = C(config['initial_constant_value'], config['constant_bounds']) * ExponentialKernel(config['initial_length_scales'][0])
-gpr = GaussianProcessRegressor(kernel=kernel, optimizer=custom_optimizer, n_restarts_optimizer=config['n_restarts_optimizer'], random_state=42)
+# Define the GPR model with initial kernel for Trial 7
+initial_kernel = C(config['initial_constant_value'], config['constant_bounds']) * ExponentialKernel(config['initial_length_scales'][0], config['length_scale_bounds'])
+gpr = GaussianProcessRegressor(kernel=initial_kernel, optimizer=custom_optimizer, n_restarts_optimizer=config['n_restarts_optimizer'], random_state=42)
 
-# Create a pipeline with standardization and GPR
+# Create a pipeline with GPR
 pipeline = Pipeline([
-    ('scaler', StandardScaler()),  # Reintroduce StandardScaler
+    ('scaler', StandardScaler() if config['standardize'] else 'passthrough'),
     ('gpr', gpr)
 ])
 
 # Define the hyperparameter grid to optimize
-param_grid_trial_6 = {
+param_grid = {
     'gpr__kernel': [
-        C(config['initial_constant_value'], config['constant_bounds']) * ExponentialKernel(length_scale)
+        C(config['initial_constant_value'], config['constant_bounds']) * ExponentialKernel(length_scale, config['length_scale_bounds'])
         for length_scale in config['initial_length_scales']
     ]
 }
 
 # Set up the grid search with cross-validation
-grid_search = GridSearchCV(pipeline, param_grid_trial_6, cv=config['cv_folds'], n_jobs=-1, verbose=2)
+grid_search = GridSearchCV(pipeline, param_grid, cv=config['cv_folds'], n_jobs=-1, verbose=2)
 
 # Start the timer for the grid search
 grid_search_start_time = time.time()
