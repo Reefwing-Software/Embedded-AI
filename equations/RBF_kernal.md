@@ -18,3 +18,10 @@ $$
 \text{Covariance Matrix: }
 K_{ij} = k(x_i, x_j)
 $$
+
+<br>
+
+<!-- Exponential Kernel -->
+$$
+\text{Exponential}(x, x{\prime}) = \exp\left(-\frac{\|x - x{\prime}\|}{\sigma}\right)
+$$
