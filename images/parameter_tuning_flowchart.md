@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-:::mermaid
+```mermaid
 graph TD
      %%{ init: { 'flowchart': { 'curve': 'linear' } } }%%
     A[Parameters] --> B[Cross-validation]
