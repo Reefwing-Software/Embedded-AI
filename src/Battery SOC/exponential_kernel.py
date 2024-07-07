@@ -16,17 +16,17 @@ import numpy as np
 import pandas as pd
 import joblib, os, time
 
-# Define the hyperparameters in a configuration dictionary for Trial 6
+# Define the hyperparameters in a configuration dictionary for Trial 7
 config = {
-    'trial': 6,
-    'initial_constant_value': 0.199809,  # Squared value of 0.447
-    'constant_bounds': (0.01, 1.0),  # Lower bound adjusted to 0.01
-    'initial_length_scales': [0.0001, 0.001, 0.01],  # Positive initial length scales
-    'length_scale_bounds': (0.0001, 1.0),  # Positive bounds for length scales
-    'max_iter': 30000,  # Increasing max_iter to allow more iterations for optimization
-    'n_restarts_optimizer': 15,  # Increasing the number of restarts for more thorough optimization
-    'cv_folds': 5,  # Keeping the same number of cross-validation folds
-    'standardize': True  # Keeping standardization
+    'trial': 7,
+    'initial_constant_value': 0.079056,  # Squared value of 0.281
+    'constant_bounds': (0.01, 1.0),  # Same bounds to allow exploration
+    'initial_length_scales': [0.01, 0.05, 0.1],  # Avoiding very small initial values
+    'length_scale_bounds': (0.01, 1.0),  # Adjusting bounds to avoid near-zero values
+    'max_iter': 30000,  # Keeping high to allow thorough optimization
+    'n_restarts_optimizer': 15,  # Same number of restarts for robustness
+    'cv_folds': 5,  # Keeping the same cross-validation folds
+    'standardize': True  # Continue standardizing the data
 }
 
 class ExponentialKernel(Kernel):
