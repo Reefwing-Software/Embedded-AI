@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-'''mermaid
+```mermaid
 graph LR
     title[Scala Naturae Brain Evolution]
     A[Ancient Life Forms] --> B[Fish]
