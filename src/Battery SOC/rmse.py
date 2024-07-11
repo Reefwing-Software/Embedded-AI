@@ -10,6 +10,7 @@ import os
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error, max_error
 from sklearn.preprocessing import StandardScaler
+from custom_kernels import ExponentialKernel, custom_optimizer
 
 # Custom loss functions
 def trimmed_rmse(y_true, y_pred):
