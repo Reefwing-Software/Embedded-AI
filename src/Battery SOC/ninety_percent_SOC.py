@@ -12,24 +12,21 @@ from sklearn.metrics import mean_squared_error, max_error
 from sklearn.preprocessing import StandardScaler
 from custom_kernels import ExponentialKernel, custom_optimizer
 
-import numpy as np
-import pandas as pd
-import joblib
-import os
-import matplotlib.pyplot as plt
-from sklearn.metrics import mean_squared_error, max_error
-from sklearn.preprocessing import StandardScaler
-
 # Custom loss functions
 def trimmed_rmse(y_true, y_pred):
     y_pred_trimmed = np.clip(y_pred, 0, 1)
-    return np.sqrt(mean_squared_error(y_true, y_pred))
-    #return np.sqrt(mean_squared_error(y_true, y_pred_trimmed))
+    return np.sqrt(mean_squared_error(y_true, y_pred_trimmed))
 
 def trimmed_max_abs_error(y_true, y_pred):
     y_pred_trimmed = np.clip(y_pred, 0, 1)
-    #return max_error(y_true, y_pred_trimmed)
-    return max_error(y_true, y_pred)
+    return max_error(y_true, y_pred_trimmed)
+
+# Calculate RMSE up to 0.9 SOC
+def rmse_up_to_threshold(y_true, y_pred, threshold=0.5):
+    mask = y_true <= threshold
+    y_true_filtered = y_true[mask]
+    y_pred_filtered = y_pred[mask]
+    return trimmed_rmse(y_true_filtered, y_pred_filtered)
 
 # Define file paths
 preprocessed_folder = os.path.expanduser("~/Documents/GitHub/Embedded-AI/data/LGHG2@n10C_to_25degC/Preprocessed")
@@ -71,52 +68,36 @@ X_test_scaled_list = [pd.DataFrame(scaler.transform(X), columns=X.columns) for X
 # Calculate RMSE and Max Absolute Error for each temperature
 rmse_list = []
 max_abs_error_list = []
+rmse_up_to_0_9_list = []
 
 for X_test_scaled, y_test in zip(X_test_scaled_list, y_test_list):
     y_pred = best_gpr_model.predict(X_test_scaled)
     rmse_list.append(trimmed_rmse(y_test, y_pred))
     max_abs_error_list.append(trimmed_max_abs_error(y_test, y_pred))
+    rmse_up_to_0_9_list.append(rmse_up_to_threshold(y_test, y_pred))
 
 # Plotting
 temperatures = ["-10°C", "0°C", "10°C", "25°C"]
 
-# Assuming y_test and y_pred are your true and predicted SOC values
+plt.figure(figsize=(18, 6))
 
-residuals = [y_test - np.clip(best_gpr_model.predict(X_test_scaled), 0, 1) for X_test_scaled, y_test in zip(X_test_scaled_list, y_test_list)]
-
-# Flatten the lists for plotting
-residuals = np.concatenate(residuals)
-y_test_all = np.concatenate(y_test_list)
-
-plt.figure(figsize=(10, 6))
-plt.scatter(y_test_all, residuals, alpha=0.5)
-#plt.axhline(y=0, color='r', linestyle='--')
-plt.xlabel('True SOC')
-plt.ylabel('Residual (True - Predicted)')
-plt.title('Residual Plot')
-plt.show()
-
-# Calculate additional metrics
-mae_list = [np.mean(np.abs(y_test - np.clip(best_gpr_model.predict(X_test_scaled), 0, 1))) for X_test_scaled, y_test in zip(X_test_scaled_list, y_test_list)]
-median_abs_error_list = [np.median(np.abs(y_test - np.clip(best_gpr_model.predict(X_test_scaled), 0, 1))) for X_test_scaled, y_test in zip(X_test_scaled_list, y_test_list)]
-
-print(f"RMSE {rmse_list}")
-print(f'Mean Absolute Error for each temperature: {mae_list}')
-print(f'Median Absolute Error for each temperature: {median_abs_error_list}')
-
-plt.figure(figsize=(12, 6))
-
-plt.subplot(1, 2, 1)
+plt.subplot(1, 3, 1)
 plt.bar(temperatures, rmse_list, color='blue')
 plt.title('RMSE for Each Ambient Temperature')
 plt.xlabel('Ambient Temperature')
 plt.ylabel('RMSE')
 
-plt.subplot(1, 2, 2)
+plt.subplot(1, 3, 2)
 plt.bar(temperatures, max_abs_error_list, color='red')
 plt.title('Max Absolute Error for Each Ambient Temperature')
 plt.xlabel('Ambient Temperature')
 plt.ylabel('Max Absolute Error')
+
+plt.subplot(1, 3, 3)
+plt.bar(temperatures, rmse_up_to_0_9_list, color='green')
+plt.title('RMSE up to 0.9 SOC for Each Ambient Temperature')
+plt.xlabel('Ambient Temperature')
+plt.ylabel('RMSE up to 0.9 SOC')
 
 plt.tight_layout()
 plt.show()

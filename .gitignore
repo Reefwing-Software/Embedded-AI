@@ -1,3 +1,6 @@
 
 src/Battery SOC/__pycache__/train.cpython-311.pyc
 data/LGHG2@n10C_to_25degC/Model/best_gpr_model.pkl
+src/Battery SOC/__pycache__/ninety_percent_SOC.cpython-311.pyc
+src/Battery SOC/__pycache__/rmse.cpython-311.pyc
+data/LGHG2@n10C_to_25degC/Model/best_matern_model.pkl
