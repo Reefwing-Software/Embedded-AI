@@ -12,6 +12,14 @@ from sklearn.metrics import mean_squared_error, max_error
 from sklearn.preprocessing import StandardScaler
 from custom_kernels import ExponentialKernel, custom_optimizer
 
+import numpy as np
+import pandas as pd
+import joblib
+import os
+import matplotlib.pyplot as plt
+from sklearn.metrics import mean_squared_error, max_error
+from sklearn.preprocessing import StandardScaler
+
 # Custom loss functions
 def trimmed_rmse(y_true, y_pred):
     y_pred_trimmed = np.clip(y_pred, 0, 1)
@@ -43,13 +51,20 @@ test_data = [pd.read_csv(f"{preprocessed_folder}/{file}") for file in test_files
 X_test_list = [df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current']] for df in test_data]
 y_test_list = [df['SOC'] for df in test_data]
 
-# Load the scaler used during training
+# Load the training data for scaling
+train_file = os.path.join(preprocessed_folder, 'resampled_training_data.csv')
+train_df = pd.read_csv(train_file)
+X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current']]
+
+# Standardize the data
 scaler = StandardScaler()
-scaler_file = os.path.join(model_folder, 'scaler.pkl')
-scaler = joblib.load(scaler_file)
+X_train_scaled = scaler.fit_transform(X_train)
+
+# Convert scaled training data back to DataFrame to keep feature names
+X_train_scaled = pd.DataFrame(X_train_scaled, columns=X_train.columns)
 
 # Standardize the test data
-X_test_scaled_list = [scaler.transform(X) for X in X_test_list]
+X_test_scaled_list = [pd.DataFrame(scaler.transform(X), columns=X.columns) for X in X_test_list]
 
 # Calculate RMSE and Max Absolute Error for each temperature
 rmse_list = []
