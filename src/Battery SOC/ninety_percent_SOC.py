@@ -22,7 +22,7 @@ def trimmed_max_abs_error(y_true, y_pred):
     return max_error(y_true, y_pred_trimmed)
 
 # Calculate RMSE up to 0.9 SOC
-def rmse_up_to_threshold(y_true, y_pred, threshold=0.5):
+def rmse_up_to_threshold(y_true, y_pred, threshold=0.9):
     mask = y_true <= threshold
     y_true_filtered = y_true[mask]
     y_pred_filtered = y_pred[mask]
