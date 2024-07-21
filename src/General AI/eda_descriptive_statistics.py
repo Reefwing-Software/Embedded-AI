@@ -5,6 +5,7 @@
 
 import os
 import pandas as pd
+import numpy as np
 from scipy.stats import skew, kurtosis, mode
 
 # Define the data folder and file name
@@ -21,7 +22,9 @@ median = data.median()
 mode_value = mode(data, nan_policy='omit').mode[0]
 
 # Calculate Dispersion
-data_range = data.max() - data.min()
+data_max = data.max()
+data_min = data.min()
+data_range = data_max - data_min
 variance = data.var()
 std_deviation = data.std()
 
@@ -29,16 +32,18 @@ std_deviation = data.std()
 skewness = data.apply(lambda x: skew(x.dropna()))
 kurt = data.apply(lambda x: kurtosis(x.dropna()))
 
-# Frequency Distribution (for simplicity, showing value counts for the first column)
-frequency_distribution = data.iloc[:, 0].value_counts()
+# Column names for which to calculate frequency distribution
+columns = ['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current', 'SOC']
 
 # Display the results
-print("Central Tendency:")
+print("\nCentral Tendency:")
 print(f"Mean:\n{mean}\n")
 print(f"Median:\n{median}\n")
 print(f"Mode:\n{mode_value}\n")
 
 print("Dispersion:")
+print(f"Maximum:\n{data_max}\n")
+print(f"Minimum:\n{data_min}\n")
 print(f"Range:\n{data_range}\n")
 print(f"Variance:\n{variance}\n")
 print(f"Standard Deviation:\n{std_deviation}\n")
@@ -47,5 +52,8 @@ print("Distribution Shape:")
 print(f"Skewness:\n{skewness}\n")
 print(f"Kurtosis:\n{kurt}\n")
 
-print("Frequency Distribution (first column):")
-print(frequency_distribution)
+# Calculate and display frequency distribution for each column
+print("Frequency Distribution:")
+for col in columns:
+    print(f"\n{col}:")
+    print(data[col].value_counts())
