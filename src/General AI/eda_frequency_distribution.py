@@ -15,20 +15,11 @@ file_path = os.path.join(data_folder, file_name)
 # Load the data
 data = pd.read_csv(file_path)
 
-# Get columns for which to plot frequency distribution
-columns = ['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current', 'SOC']
-
-# Create a subplot for each column
-fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(15, 15))
-axes = axes.flatten()
-
-# Plot frequency distribution for each column
-for i, col in enumerate(columns):
-    data[col].value_counts().sort_index().plot(kind='bar', ax=axes[i])
-    axes[i].set_title(f'Frequency Distribution of {col}')
-    axes[i].set_xlabel(col)
-    axes[i].set_ylabel('Frequency')
-    axes[i].grid(True)
-
-plt.tight_layout()
+# Plot frequency histogram for 'Voltage' column
+plt.figure(figsize=(10, 6))
+data['Voltage'].hist(bins=50, edgecolor='black')
+plt.title('Frequency Histogram of Voltage')
+plt.xlabel('Voltage')
+plt.ylabel('Frequency')
+plt.grid(True)
 plt.show()
