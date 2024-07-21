@@ -18,16 +18,19 @@ data = pd.read_csv(file_path)
 # Get columns for which to plot frequency histogram
 columns = ['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current', 'SOC']
 
+# Define pastel colors for each feature
+colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightskyblue', 'lightpink', 'lightgoldenrodyellow']
+
 # Create subplots for each column
-fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(15, 15))
+fig, axes = plt.subplots(nrows=2, ncols=3, figsize=(18, 10))
 axes = axes.flatten()
 
 # Plot frequency histogram for each column
 for i, col in enumerate(columns):
-    data[col].hist(bins=50, edgecolor='black', ax=axes[i])
-    axes[i].set_title(f'Frequency Histogram of {col}')
+    data[col].hist(bins=50, edgecolor='black', ax=axes[i], color=colors[i], alpha=0.7, label=col)
     axes[i].set_xlabel(col)
     axes[i].set_ylabel('Frequency')
+    axes[i].legend()
     axes[i].grid(True)
 
 plt.tight_layout()
