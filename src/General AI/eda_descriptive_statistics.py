@@ -5,8 +5,7 @@
 
 import os
 import pandas as pd
-import numpy as np
-from scipy.stats import skew, kurtosis, mode
+from scipy.stats import skew, kurtosis
 
 # Define the data folder and file name
 data_folder = os.path.expanduser("~/Documents/GitHub/AI-Advances/articles/exploratory_data_analysis/Preprocessed")
@@ -19,7 +18,7 @@ data = pd.read_csv(file_path)
 # Calculate Central Tendency
 mean = data.mean()
 median = data.median()
-mode_value = mode(data, nan_policy='omit').mode[0]
+mode_value = data.mode().iloc[0]
 
 # Calculate Dispersion
 data_max = data.max()
