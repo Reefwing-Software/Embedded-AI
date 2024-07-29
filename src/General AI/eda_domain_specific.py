@@ -53,8 +53,6 @@ num_outliers_after = count_outliers(cleaned_data['Current'])
 print(f"Number of outliers before removal: {num_outliers_before}")
 print(f"Number of outliers after removal: {num_outliers_after}")
 
-import matplotlib.pyplot as plt
-
 # Create subplots for box plots before and after removing anomalies
 fig, axes = plt.subplots(1, 2, figsize=(18, 6))
 
