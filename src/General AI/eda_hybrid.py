@@ -82,3 +82,15 @@ axes[1].set_xlabel('Current')
 
 plt.tight_layout()
 plt.show()
+
+# Plot cleaned Current data against Timestamp
+plt.figure(figsize=(14, 6))
+plt.plot(cleaned_data['Timestamp'], cleaned_data['Current'], label='Cleaned Current')
+plt.xlabel('Timestamp')
+plt.ylabel('Current')
+plt.title('Cleaned Current Data Over Time')
+plt.legend()
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
