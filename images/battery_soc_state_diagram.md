@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-:::mermaid
+```mermaid
 flowchart TB
      %%{ init: { 'flowchart': { 'curve': 'linear' } } }%%
     A[Initial State] --> B[Standby State]
