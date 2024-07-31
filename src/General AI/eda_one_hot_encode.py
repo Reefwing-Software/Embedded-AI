@@ -13,10 +13,10 @@ file_path = os.path.join(data_folder, file_name)
 data = pd.read_csv(file_path)
 
 # Define the ranges for Temperature categories (adjusted for every 100th point)
-idx0_range = range(0, 184257//100 + 1)
-idx10_range = range(184258//100, 337973//100 + 1)
-idx25_range = range(337974//100, 510530//100 + 1)
-idxN10_range = range(510531//100, 669956//100 + 1)
+idx0_range = range(0, 1843)
+idx10_range = range(1843, 3380)
+idx25_range = range(3380, 5107)
+idxN10_range = range(5107, 6700)
 
 # Initialize Temperature column with default values
 data['Temperature'] = 0
