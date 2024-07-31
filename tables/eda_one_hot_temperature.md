@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-| Voltage     | Current   | Average Volt | Average Curr | SOC         | Temperature_0 | Temperature_10 | Temperature_25 | Temperature_-10 |
+| Voltage     | Current   | Av Volt | Av Curr | SOC         | Temp_0 | Temp_10 | Temp_25 | Temp_-10 |
 |-------------|-----------|--------------|--------------|-------------|---------------|----------------|----------------|-----------------|
 | 0.385147925 | 0.75102009| 0.385147925  | 0.75102009   | 0.206416666 | 0             | 1              | 0              | 0               |
 | 0.385460313 | 0.75102009| 0.385304113  | 0.75102009   | 0.206416666 | 0             | 1              | 0              | 0               |
