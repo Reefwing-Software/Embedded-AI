@@ -25,12 +25,12 @@ columns_to_standardise = data.select_dtypes(include=[float, int]).columns
 # Standardize the selected columns
 data[columns_to_standardise] = scaler.fit_transform(data[columns_to_standardise])
 
-# Check if the standardization has been successful
+# Check if the standardisation has been successful
 means = data[columns_to_standardise].mean()
 stds = data[columns_to_standardise].std()
 
-print("Means after standardization:\n", means)
-print("Standard deviations after standardization:\n", stds)
+print("Means after standardisation:\n", means)
+print("Standard deviations after standardisation:\n", stds)
 
 # Save the standardised data to a new CSV file
 new_file_name = 'standardised_training_data.csv'
