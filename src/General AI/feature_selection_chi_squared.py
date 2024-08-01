@@ -10,21 +10,16 @@ from sklearn.preprocessing import MinMaxScaler
 
 # Load the standardized data
 data_folder = os.path.expanduser("~/Documents/GitHub/AI-Advances/articles/exploratory_data_analysis/Preprocessed")
-file_name = 'standardised_training_data.csv'
+file_name = 'resampled_training_data.csv'
 file_path = os.path.join(data_folder, file_name)
 data = pd.read_csv(file_path)
-target_column = 'SOC'
 
 # Separate the features and the target
-X = data.drop(columns=[target_column])
-y = data[target_column]
-
-# Scale features to [0, 1] for the Chi-Square test
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
+X = data.drop(columns=['SOC'])
+y = data['SOC']
 
 # Perform the Chi-Square test
-chi2_scores, p_values = chi2(X_scaled, y)
+chi2_scores, p_values = chi2(X, y)
 
 # Create a DataFrame to store the results
 chi2_results = pd.DataFrame({
