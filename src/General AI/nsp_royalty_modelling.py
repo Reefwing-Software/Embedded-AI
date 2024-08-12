@@ -14,8 +14,10 @@ royalty_rates = [0.15, 0.12, 0.10]
 advances = [0, 5000, 8000]
 
 # Define the new prices and sales mix
-ebook_price = 48
-print_book_price = 60
+#ebook_price = 48
+#print_book_price = 60
+ebook_price = 24
+print_book_price = 30
 ebook_ratio = 0.25
 print_book_ratio = 0.75
 
