@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-| Pin | OPAMP I/O|
+| Pin | OP-AMP I/O |
 |-----|----------|
 | A1  | V +  |
 | A2  | V -  |
