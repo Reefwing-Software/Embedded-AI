@@ -3,8 +3,14 @@
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Define the data folder and file name
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_6")
+file_name = 'f06004.pdf'
+file_path = os.path.join(data_folder, file_name)
 
 # Generate a sample signal: a combination of a low-frequency and a high-frequency component
 fs = 500  # Sampling frequency
@@ -22,9 +28,10 @@ filtered_signal = np.convolve(signal, np.ones(window_size)/window_size, mode='sa
 plt.figure(figsize=(14, 7))
 plt.plot(t, signal, label='Original Signal', color='orange')
 plt.plot(t, filtered_signal, label='Filtered Signal (Low-pass)', color='blue')
-plt.title('Low-pass Filter Effect')
+# plt.title('Low-pass Filter Effect')
 plt.xlabel('Time [s]')
 plt.ylabel('Amplitude')
 plt.legend()
 plt.grid()
+plt.savefig()
 plt.show()
