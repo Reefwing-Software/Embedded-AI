@@ -5,7 +5,7 @@
  https://opensource.org/licenses/MIT
 -->
 
-#### Central Tendency
+### Central Tendency
 | Metric     | Voltage   | Current   | Temperature | Average Voltage | Average Current | SOC     |
 |------------|-----------|-----------|-------------|-----------------|-----------------|---------|
 | **Mean**   | 0.710954  | 0.752850  | 0.672203    | 0.710923        | 0.752850        | 0.640390|
