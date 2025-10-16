@@ -1,0 +1,2 @@
+.program wavetable_output
+    out pins, 8  ; Output 8 bits from OSR to GPIO2–GPIO9
