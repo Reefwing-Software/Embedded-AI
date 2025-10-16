@@ -1,3 +1,5 @@
+![license](https://img.shields.io/badge/license-MIT-green) ![release](https://img.shields.io/github/release-date/Reefwing-Software/Embedded-AI?color="red") ![open source](https://badgen.net/badge/open/source/blue?icon=github)
+
 # Embedded AI — Code Repository
 
 Welcome to the official GitHub repository for **_Embedded AI: Intelligence at the Deep Edge_**, published by **No Starch Press**.
