@@ -63,9 +63,7 @@ This book is designed to equip you with the **knowledge and hands-on experience*
 
 ## Hardware Requirements
 
-In addition to the embedded hardware listed below, you’ll need a **laptop or desktop computer** capable of running Python scripts and training machine learning models.
-
-Any modern system — **Windows**, **macOS**, or **Linux** — will work, as long as it supports **Python 3.x** and can handle basic machine learning workloads.
+In addition to the embedded hardware listed below, you’ll need a **laptop or desktop computer** capable of running Python scripts and training machine learning models. Any modern system — **Windows**, **macOS**, or **Linux** — will work, as long as it supports **Python 3.x** and can handle basic machine learning workloads.
 
 While this book focuses on **embedded AI**, most **model training**, particularly for deep learning, is performed on **laptops, desktops, or in the cloud**. These environments provide the **processing power and memory** required to manage large datasets and complex computations that would be impractical on microcontrollers.
 
@@ -73,7 +71,7 @@ Once models are trained, they are **quantized, compressed, and optimized** for d
 
 Each project chapter includes a detailed **Bill of Materials (BOM)**, listing the exact components required.
 
-The Table below summarizes the **primary hardware platforms** used across all chapters. You’ll find that some boards are reused — particularly the **Arduino UNO R4 Minima**, **Arduino Nano 33 BLE Sense**, and **Raspberry Pi Pico 2** — making them smart early investments.
+The Table below summarizes the **primary hardware platforms** used across all chapters. You’ll find that some boards are reused — particularly the **Arduino UNO R3 and R4 Minima**, **Arduino Nano 33 BLE Sense**, and **Raspberry Pi Pico/Pico 2** — making them smart early investments.
 
 | Chapter | Section / Project                               | Board / Platform                                   | Additional Components                                                                                                      |
 |----------|--------------------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
