@@ -63,12 +63,17 @@ This book is designed to equip you with the **knowledge and hands-on experience*
 
 ## Hardware Requirements
 
-In addition to the embedded hardware listed below, you’ll need a **laptop or desktop computer** capable of running Python scripts and training machine learning models.<br>  
-Any modern system — **Windows**, **macOS**, or **Linux** — will work, as long as it supports **Python 3.x** and can handle basic machine learning workloads.<br>
-While this book focuses on **embedded AI**, most **model training**, particularly for deep learning, is performed on **laptops, desktops, or in the cloud**. These environments provide the **processing power and memory** required to manage large datasets and complex computations that would be impractical on microcontrollers.<br>
-Once models are trained, they are **quantized, compressed, and optimized** for deployment on embedded targets. This approach — **train on the desktop, deploy at the edge** — is the standard and most practical workflow for embedded AI development.<br>
-Each project chapter includes a detailed **Bill of Materials (BOM)**, listing the exact components required.<br>
-Table 2-1 in the book summarizes the **primary hardware platforms** used across all chapters. You’ll find that some boards are reused — particularly the **Arduino UNO R4 Minima**, **Arduino Nano 33 BLE Sense**, and **Raspberry Pi Pico 2** — making them smart early investments.
+In addition to the embedded hardware listed below, you’ll need a **laptop or desktop computer** capable of running Python scripts and training machine learning models.
+
+Any modern system — **Windows**, **macOS**, or **Linux** — will work, as long as it supports **Python 3.x** and can handle basic machine learning workloads.
+
+While this book focuses on **embedded AI**, most **model training**, particularly for deep learning, is performed on **laptops, desktops, or in the cloud**. These environments provide the **processing power and memory** required to manage large datasets and complex computations that would be impractical on microcontrollers.
+
+Once models are trained, they are **quantized, compressed, and optimized** for deployment on embedded targets. This approach — **train on the desktop, deploy at the edge** — is the standard and most practical workflow for embedded AI development.
+
+Each project chapter includes a detailed **Bill of Materials (BOM)**, listing the exact components required.
+
+The Table below summarizes the **primary hardware platforms** used across all chapters. You’ll find that some boards are reused — particularly the **Arduino UNO R4 Minima**, **Arduino Nano 33 BLE Sense**, and **Raspberry Pi Pico 2** — making them smart early investments.
 
 | Chapter | Section / Project                               | Board / Platform                                   | Additional Components                                                                                                      |
 |----------|--------------------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -94,7 +99,8 @@ Table 2-1 in the book summarizes the **primary hardware platforms** used across 
 
 You don’t need to purchase all components in advance. Review the table, decide which projects you’d like to build first, and assemble the necessary hardware as you go.
 
-Some projects use **custom Reefwing PCBs**, which you’ll need to **fabricate and assemble** before use. The repository includes **Gerber files** that you can upload directly to your preferred PCB manufacturer.<br> 
+Some projects use **custom Reefwing PCBs**, which you’ll need to **fabricate and assemble** before use. The repository includes **Gerber files** that you can upload directly to your preferred PCB manufacturer.
+
 Allow **1–2 weeks** for fabrication and shipping, depending on your supplier and location.
 
 ---
@@ -150,7 +156,7 @@ If you spot an error, have a question, or want to share an alternate method, **w
 
 The best place to **report issues**, **suggest enhancements**, or **ask questions** is through this GitHub repository:
 
-**Repository:** [Repo address TK](#)
+**Repository:** [Embeddded AI](https://github.com/Reefwing-Software/Embedded-AI)
 
 There you’ll find:
 - An **issue tracker** for reporting typos, bugs, or errors  
