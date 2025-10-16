@@ -174,6 +174,19 @@ The repository is organized by source code (`src/`) and chapter folders (`ch_X/`
 ├── LICENSE
 ├── README.md
 ├── data/
+├── datasheets/
+│   ├── ch_1/
+│   ├── ch_3/
+│   │   └── MCP6001 Op Amp
+│   │   └── Pico C SDK
+│   ├── ch_5/
+│   ├── ch_7/
+│   ├── ch_8/
+│   ├── ch_9/
+│   ├── ch_10/
+│   ├── ch_12/
+│   ├── ch_13/
+│   └── ch_14/
 ├── schematics/
 └── src/
     ├── ch_1/
