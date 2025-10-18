@@ -6,3 +6,4 @@ src/Battery SOC/__pycache__/rmse.cpython-311.pyc
 data/LGHG2@n10C_to_25degC/Model/best_matern_model.pkl
 src/General AI/__pycache__/eda_frequency_distribution.cpython-311.pyc
 src/General AI/__pycache__/eda_frequency_distribution.cpython-311.pyc
+soundfonts/FluidR3_GM/FluidR3_GM.sf2
