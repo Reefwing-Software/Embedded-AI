@@ -1,0 +1,285 @@
+{
+"application" : {
+    "name": "FsmTool",
+    "version": "1.1.4"
+},
+"date" : "2024-10-09  19:04:16",
+"jsonVersion" : "1.0.0",
+"sensors" : [
+    {
+        "configuration_instructions": [
+            {
+                "address": "10",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "11",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "01",
+                "command": "write",
+                "value": "80"
+            },
+            {
+                "address": "05",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "04",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "5F",
+                "command": "write",
+                "value": "4B"
+            },
+            {
+                "address": "46",
+                "command": "write",
+                "value": "01"
+            },
+            {
+                "address": "0B",
+                "command": "write",
+                "value": "01"
+            },
+            {
+                "address": "0F",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "0A",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "0E",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "17",
+                "command": "write",
+                "value": "40"
+            },
+            {
+                "address": "02",
+                "command": "write",
+                "value": "11"
+            },
+            {
+                "address": "08",
+                "command": "write",
+                "value": "7A"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "08",
+                "command": "write",
+                "value": "7C"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "01"
+            },
+            {
+                "address": "08",
+                "command": "write",
+                "value": "7E"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "04"
+            },
+            {
+                "address": "02",
+                "command": "write",
+                "value": "41"
+            },
+            {
+                "address": "08",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "91"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "10"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "16"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "66"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "3A"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "66"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "32"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "F0"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "0F"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "EF"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "33"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "05"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "73"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "99"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "08"
+            },
+            {
+                "address": "09",
+                "command": "write",
+                "value": "22"
+            },
+            {
+                "address": "02",
+                "command": "write",
+                "value": "01"
+            },
+            {
+                "address": "17",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "05",
+                "command": "write",
+                "value": "01"
+            },
+            {
+                "address": "04",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "01",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "5E",
+                "command": "write",
+                "value": "02"
+            },
+            {
+                "address": "5F",
+                "command": "write",
+                "value": "00"
+            },
+            {
+                "address": "10",
+                "command": "write",
+                "value": "04"
+            },
+            {
+                "address": "11",
+                "command": "write",
+                "value": "04"
+            }
+        ],
+        "name": "ISM330BX"
+    }
+]
+}

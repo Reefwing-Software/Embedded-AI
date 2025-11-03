@@ -1,0 +1,46 @@
+{
+"FSM_LC_TIMEOUT": "0000",
+"FSM_ODR": 30,
+"FSM_START_ADD": "0400",
+"INT1_FSM_LC": false,
+"INT2_FSM_LC": false,
+"application" : {
+    "name": "MEMS Studio",
+    "version": "1.3.0"
+},
+"extraEmbFuncRegisters" : {
+},
+"extraRegisters" : {
+},
+"sensorName": "ISM330BX",
+"data": [
+{
+"programNumber": 1,
+"status": {
+    "FSM_ENABLE": true,
+    "FSM_INT1": true,
+    "FSM_INT2": false
+},
+"variableDataSection": {
+    "MASKA": "F0",
+    "PAS": "00",
+    "TC_LSB": "00",
+    "THRESH1_LSB": "66",
+    "THRESH1_MSB": "3A",
+    "THRESH2_LSB": "66",
+    "THRESH2_MSB": "32",
+    "TIMER3": "0F",
+    "TMASKA": "00"
+},
+"instructionsSection": [
+	{"opcode":"EF","stateText":"MSKITEQ","stateType":"CMD"},
+	{"opcode":"33","stateText":"SRP","stateType":"CMD"},
+	{"opcode":"05","stateText":"NOP | GNTH1","stateType":"RNC"},
+	{"opcode":"73","stateText":"LNTH1 | TI3","stateType":"RNC"},
+	{"opcode":"99","stateText":"OUTC","stateType":"CMD"},
+	{"opcode":"08","stateText":"NOP | LNTH2","stateType":"RNC"},
+	{"opcode":"22","stateText":"CONTREL","stateType":"CMD"}
+]
+}
+]
+}
