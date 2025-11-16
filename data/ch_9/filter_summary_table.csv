@@ -1,0 +1,14 @@
+,,Roll Error,,Pitch Error,,Yaw Error,
+Filter,Noise,Mean,SD,Mean,SD,Mean,SD
+Classic,with,-3.4,22,90.8,401,112,40.3
+Classic,without,0.2,8,78.4,346,116,26.0
+CF,with,45.4,21,4.7,14,326,0.4
+CF,without,37.6,21,0.4,14,328,0.3
+EKF,with,34.0,23,-1.2,14,124,7.9
+EKF,without,29.4,22,-0.1,14,124,6.7
+Madgwick,with,18.4,48,-3.7,30,183,13.5
+Madgwick,without,16.0,48,-4.6,32,185,15.5
+Mahony,with,0.8,43,-0.1,29,182,5.2
+Mahony,without,0.8,43,-0.1,29,182,5.2
+None,with,274.1,24,5381.6,29,-81,149.1
+None,without,-51.0,24,5202.7,24,-3,22.0
