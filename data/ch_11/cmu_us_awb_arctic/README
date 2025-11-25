@@ -1,0 +1,104 @@
+
+CMU ARCTIC AWB 0.90
+
+This distrory contains a recording of the phonetically balanced US
+English CMU ARCTIC database by AWB, a Scottish English speaker.
+
+See http://www.festvox.org/cmu_arctic/ for details on the 
+database coverage and other recordings of this dataset
+
+The format follows the Festvox (http://www.festvox.org) directory
+structure.
+
+The directory structure is 
+ bin/
+     basic scripts for building prompts, labelling feature files etc.s
+ cep/
+     Ceptrum files dynamically created in phone autolabellingl
+ dic/
+     Final diphone dictionary final (used at run-time)
+ etc/
+     prompt file, and some labelling templates 
+ festival/
+     Not used in diphone bases
+ festvox/
+     scheme voice definition files (used at run-time)
+ group/
+     extracted diphones into signle group file for distribution
+ lab/
+     autolabelled phone labels
+ lar/
+     recorded EGG signal files (not used in this example)
+ lpc/
+     LPC parameters plus residuals, (used at run-time for nongrouped version)
+ mcep/
+     MFCC (Mel Frequency Cepstrum Coefficients) not used in diphone databases
+ pm/
+     Pitchmark files as extract from waveforms (or EGG signal)
+ pm_lab/
+     derived pitchmark labeled files from pm/ enabling emulabel (and others
+     display programs) to show the pitchmarks and waveform files.
+ prompt-cep/
+     cepstrum files for
+ prompt-lab/
+     label files for synthesized prompts 
+ prompt-wav/
+     waveforms of synthesized prompts
+ prompt-utts/
+     utterances of synthesized prompts
+ wav/
+     recorded spoken nonsense words (in Microsoft riff (wav) format).
+     If you are using Xwaves you should convert these to NIST format
+
+INSTALLING AS A FESTIVAL VOICE
+==============================
+
+As distributed this voice may be used as a festival clunits voice with
+versions 1.4.2 and 1.4.3 of Festival (which is available from)
+
+    http://www.cstr.ed.ac.uk/projects/festival/ or
+    http://www.festvox.org/festival/
+
+You can run the voice "in place" or link it into your festival
+installation.  
+
+To run "in place" from the database directory
+
+    festival festvox/cmu_us_awb_arctic_clunits.scm
+    ...
+    festival> (voice_cmu_us_awb_arctic_clunits)
+    ...
+    festival> (SayText "This is a short introduction ...")
+
+Or to install as voice in your Festival installation it must appear
+as a subdirectory of a subdirectory of a directory listed in the 
+Festival variable voice-path.  For standard installations you can
+create the following directory if it doesn't exist
+
+    /...WHATEVER.../festival/lib/voices/us/
+
+For RPM installed systems (such as RedHat) this would be
+
+    /usr/share/festival/voices/us/
+
+In that directory create a symbolic link to the arctic voice as in
+
+    ln -s /usr/local/arctic/cmu_us_awb_arctic cmu_us_awb_arctic_clunits
+
+Note the name in the us/ directory must be the name of the voice.
+
+This should allow festival to find the voice automatically thus
+
+    festival
+    ...
+    festival> (voice_cmu_us_awb_arctic_clunits)
+    ...
+    festival> (SayText "This is a short introduction ...")
+    
+
+
+
+
+
+
+
