@@ -7,3 +7,7 @@ data/LGHG2@n10C_to_25degC/Model/best_matern_model.pkl
 src/General AI/__pycache__/eda_frequency_distribution.cpython-311.pyc
 src/General AI/__pycache__/eda_frequency_distribution.cpython-311.pyc
 soundfonts/FluidR3_GM/FluidR3_GM.sf2
+src/ch_11/pico2-audio-spectrogram/lib/CMSIS/CMSIS-DSP/
+src/ch_11/pico2-audio-spectrogram/lib/CMSIS/CMSIS_6/
+src/ch_11/pico2-cmsis-test/lib/CMSIS/CMSIS-DSP/
+src/ch_11/pico2-cmsis-test/lib/CMSIS/CMSIS_6/
