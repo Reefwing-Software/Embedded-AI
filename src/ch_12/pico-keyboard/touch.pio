@@ -1,0 +1,73 @@
+.program touch
+debounce_setup:  
+    pull noblock    ; Retrieves OSR, used as a counter, noblock prevents stalling
+    mov y, x        ; Store previous touch state in Y scratch register
+debounce_loop:
+    out null, 1     ; Decrement the OSR counter
+    in null, 27     ; Clear the ISR to prevent leftover data
+    set pindirs, 31         ; Configure all 5 pins as outputs (0b11111 = 31 decimal)
+    set pins, 31            ; Set all pins high
+    set pindirs, 0 [2]      ; Set pins as inputs, then delay 2 cycles
+    in pins, 5 [6]          ; Read pin values into ISR
+    mov x, isr              ; Store ISR value into X (current touch state)
+    jmp x!=y, debounce_setup  ; If input changes, restart debounce loop
+    jmp !osre, debounce_loop  ; Continue looping until the OSR counter reaches 0
+    push block                ; Push final state into RX FIFO for retrieval by CPU
+    
+.wrap_target                  ; Defines where execution restarts after reaching .wrap
+start:
+    mov y, x                  ; Store the previous touch state in Y
+    in null, 27               ; Clear the ISR
+    set pindirs, 31           ; Configure all pins as outputs
+    set pins, 31              ; Set all pins high
+    set pindirs, 0 [2]        ; Set pins as inputs, then delay 2 cycles
+    in pins, 5 [6]            ; Read pins into ISR after 6 cycles
+    mov x, isr                ; Copy new input state into X
+    jmp x!=y, debounce_setup  ; If input changes, go to debounce
+.wrap
+
+% c-sdk {
+/**
+ * @brief Initializes a PIO state machine for capacitive touch sensing.
+ *
+ * This function configures the specified PIO state machine (SM) to handle capacitive 
+ * touch detection on a set of GPIO pins. It sets up the GPIOs with pull-downs, 
+ * adjusts drive strength and slew rate for optimized signal handling, and applies 
+ * PIO state machine configuration settings.
+ *
+ * @param pio            The PIO instance to use (e.g., pio0 or pio1).
+ * @param sm             The state machine number within the specified PIO instance.
+ * @param offset         The memory offset where the PIO program is loaded.
+ * @param pin            The first GPIO pin used for touch sensing.
+ * @param num_buttons    The number of touch-sensitive GPIOs starting from 'pin'.
+ * @param pio_clk_div    Clock divider to adjust sensitivity and sampling rate.
+ * @param drive_strength GPIO drive strength (2mA, 4mA, 8mA, or 12mA) for touch pins.
+ * @param fast_slew      Boolean flag: true for fast slew rate, false for slow slew rate.
+ */
+
+void touch_init(PIO pio, uint sm, uint offset, uint pin, uint num_buttons, 
+                float pio_clk_div, uint drive_strength, bool fast_slew) {
+    int i;
+    
+    for (i = 0; i < num_buttons; i++) {
+        pio_gpio_init(pio, pin + i);
+        gpio_pull_down(pin + i);
+
+        // Set drive strength (2mA, 4mA, 8mA, or 12mA)
+        gpio_set_drive_strength(pin + i, drive_strength);
+
+        // Configure slew rate (true = fast, false = slow)
+        gpio_set_slew_rate(pin + i, fast_slew);
+    }
+
+    // Load default PIO state machine configuration for touch detection
+    pio_sm_config c = touch_program_get_default_config(offset);
+    sm_config_set_clkdiv(&c, pio_clk_div); // Adjust timing for sensitivity
+    sm_config_set_set_pins(&c, pin, num_buttons);
+    sm_config_set_in_pins(&c, pin);
+    sm_config_set_in_shift(&c, false, false, 32);
+    
+    // Initialize the PIO state machine with the configured settings
+    pio_sm_init(pio, sm, offset, &c);
+}
+%}    
