@@ -154,7 +154,7 @@ If you spot an error, have a question, or want to share an alternate method, **w
 
 The best place to **report issues**, **suggest enhancements**, or **ask questions** is through this GitHub repository:
 
-**Repository:** [Embeddded AI](https://github.com/Reefwing-Software/Embedded-AI)
+**Repository:** [Embedded AI](https://github.com/Reefwing-Software/Embedded-AI)
 
 There you’ll find:
 - An **issue tracker** for reporting typos, bugs, or errors  
