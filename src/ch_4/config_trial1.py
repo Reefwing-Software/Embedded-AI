@@ -104,3 +104,19 @@ for key, value in config.items():
 
 # Load the best model (example of how to load it later)
 # best_gpr_model = joblib.load(model_file)
+
+# Grid search completed in 13 minutes and 11.50 seconds
+# Best parameters found: {'gpr__kernel': 0.1**2 * RBF(length_scale=0.5)}
+# Best cross-validation score: -1102.221608872008
+# Actual parameters of the best kernel: 0.316**2 * RBF(length_scale=0.01)
+# Total script execution time: 13 minutes and 11.65 seconds
+#
+# Hyperparameters used in this trial:
+# trial: 1
+# initial_constant_value: 0.01
+# constant_bounds: (0.001, 0.1)
+# initial_length_scales: [0.5, 0.25, 1.0]
+# length_scale_bounds: (0.01, 1.0)
+# max_iter: 15000
+# n_restarts_optimizer: 10
+# cv_folds: 5
