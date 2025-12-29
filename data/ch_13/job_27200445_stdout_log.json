@@ -1,0 +1,361 @@
+{
+    "success": true,
+    "stdout": [
+        {
+            "created": "2024-12-17T06:13:09.022Z",
+            "data": "\nModel training complete\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:13:08.022Z",
+            "data": "\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:39.807Z",
+            "data": "Finished training\n\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:39.807Z",
+            "data": "120/120 - 1s - loss: 0.2262 - accuracy: 0.9172 - val_loss: 0.2385 - val_accuracy: 0.9109 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:38.805Z",
+            "data": "Epoch 30/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:37.805Z",
+            "data": "120/120 - 1s - loss: 0.2202 - accuracy: 0.9193 - val_loss: 0.2198 - val_accuracy: 0.9214 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:36.804Z",
+            "data": "Epoch 29/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:36.804Z",
+            "data": "120/120 - 1s - loss: 0.2298 - accuracy: 0.9174 - val_loss: 0.2291 - val_accuracy: 0.9161 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:35.802Z",
+            "data": "Epoch 28/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:35.802Z",
+            "data": "120/120 - 1s - loss: 0.2332 - accuracy: 0.9153 - val_loss: 0.2295 - val_accuracy: 0.9182 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:34.802Z",
+            "data": "Epoch 27/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:34.801Z",
+            "data": "120/120 - 1s - loss: 0.2214 - accuracy: 0.9182 - val_loss: 0.2317 - val_accuracy: 0.9193 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:33.800Z",
+            "data": "Epoch 26/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:32.800Z",
+            "data": "120/120 - 1s - loss: 0.2394 - accuracy: 0.9135 - val_loss: 0.2456 - val_accuracy: 0.9067 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:31.798Z",
+            "data": "Epoch 25/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:31.798Z",
+            "data": "120/120 - 1s - loss: 0.2303 - accuracy: 0.9156 - val_loss: 0.2204 - val_accuracy: 0.9235 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:30.797Z",
+            "data": "Epoch 24/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:30.797Z",
+            "data": "120/120 - 1s - loss: 0.2278 - accuracy: 0.9187 - val_loss: 0.2478 - val_accuracy: 0.9057 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:29.796Z",
+            "data": "Epoch 23/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:28.796Z",
+            "data": "120/120 - 1s - loss: 0.2271 - accuracy: 0.9193 - val_loss: 0.2283 - val_accuracy: 0.9235 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:27.796Z",
+            "data": "Epoch 22/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:27.795Z",
+            "data": "120/120 - 1s - loss: 0.2436 - accuracy: 0.9085 - val_loss: 0.2296 - val_accuracy: 0.9203 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:26.794Z",
+            "data": "Epoch 21/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:26.793Z",
+            "data": "120/120 - 1s - loss: 0.2381 - accuracy: 0.9148 - val_loss: 0.2396 - val_accuracy: 0.9182 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:25.793Z",
+            "data": "Epoch 20/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:25.793Z",
+            "data": "120/120 - 1s - loss: 0.2427 - accuracy: 0.9088 - val_loss: 0.2323 - val_accuracy: 0.9130 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:25.793Z",
+            "data": "120/120 - 1s - loss: 0.2427 - accuracy: 0.9088 - val_loss: 0.2323 - val_accuracy: 0.9130 - 1s/epoch - 11ms/step\nEpoch 20/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:24.791Z",
+            "data": "Epoch 19/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:23.791Z",
+            "data": "120/120 - 1s - loss: 0.2418 - accuracy: 0.9090 - val_loss: 0.2893 - val_accuracy: 0.8878 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:22.790Z",
+            "data": "Epoch 18/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:22.790Z",
+            "data": "120/120 - 1s - loss: 0.2432 - accuracy: 0.9104 - val_loss: 0.2351 - val_accuracy: 0.9151 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:21.789Z",
+            "data": "Epoch 17/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:21.789Z",
+            "data": "120/120 - 1s - loss: 0.2525 - accuracy: 0.9072 - val_loss: 0.2379 - val_accuracy: 0.9203 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:20.788Z",
+            "data": "Epoch 16/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:19.787Z",
+            "data": "120/120 - 1s - loss: 0.2706 - accuracy: 0.8980 - val_loss: 0.2514 - val_accuracy: 0.9078 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:18.786Z",
+            "data": "Epoch 15/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:18.786Z",
+            "data": "120/120 - 1s - loss: 0.2577 - accuracy: 0.9051 - val_loss: 0.2334 - val_accuracy: 0.9161 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:17.784Z",
+            "data": "Epoch 14/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:17.784Z",
+            "data": "120/120 - 1s - loss: 0.2669 - accuracy: 0.8999 - val_loss: 0.2429 - val_accuracy: 0.9140 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:16.783Z",
+            "data": "Epoch 13/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:16.782Z",
+            "data": "120/120 - 1s - loss: 0.2630 - accuracy: 0.9017 - val_loss: 0.3688 - val_accuracy: 0.8449 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:15.782Z",
+            "data": "Epoch 12/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:14.781Z",
+            "data": "120/120 - 1s - loss: 0.2681 - accuracy: 0.8983 - val_loss: 0.2844 - val_accuracy: 0.8847 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:13.779Z",
+            "data": "Epoch 11/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:13.779Z",
+            "data": "120/120 - 1s - loss: 0.2850 - accuracy: 0.8946 - val_loss: 0.2661 - val_accuracy: 0.8899 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:12.778Z",
+            "data": "120/120 - 1s - loss: 0.3005 - accuracy: 0.8891 - val_loss: 0.2710 - val_accuracy: 0.8889 - 1s/epoch - 11ms/step\nEpoch 10/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:12.778Z",
+            "data": "Epoch 10/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:12.778Z",
+            "data": "120/120 - 1s - loss: 0.3005 - accuracy: 0.8891 - val_loss: 0.2710 - val_accuracy: 0.8889 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:11.777Z",
+            "data": "Epoch 9/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:11.777Z",
+            "data": "120/120 - 1s - loss: 0.2832 - accuracy: 0.8910 - val_loss: 0.3500 - val_accuracy: 0.8564 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:10.774Z",
+            "data": "Epoch 8/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:09.773Z",
+            "data": "120/120 - 1s - loss: 0.2946 - accuracy: 0.8889 - val_loss: 0.2646 - val_accuracy: 0.9057 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:08.772Z",
+            "data": "Epoch 7/30\n120/120 - 1s - loss: 0.2946 - accuracy: 0.8889 - val_loss: 0.2646 - val_accuracy: 0.9057 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:08.772Z",
+            "data": "120/120 - 1s - loss: 0.3162 - accuracy: 0.8760 - val_loss: 0.2858 - val_accuracy: 0.8952 - 1s/epoch - 11ms/step\nEpoch 7/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:07.770Z",
+            "data": "Epoch 6/30\n120/120 - 1s - loss: 0.3162 - accuracy: 0.8760 - val_loss: 0.2858 - val_accuracy: 0.8952 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:07.770Z",
+            "data": "Epoch 6/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:07.770Z",
+            "data": "120/120 - 1s - loss: 0.3241 - accuracy: 0.8661 - val_loss: 0.3413 - val_accuracy: 0.8512 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:06.769Z",
+            "data": "Epoch 5/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:05.768Z",
+            "data": "120/120 - 1s - loss: 0.3442 - accuracy: 0.8535 - val_loss: 0.3026 - val_accuracy: 0.8742 - 1s/epoch - 10ms/step\nEpoch 5/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:05.768Z",
+            "data": "120/120 - 1s - loss: 0.3442 - accuracy: 0.8535 - val_loss: 0.3026 - val_accuracy: 0.8742 - 1s/epoch - 10ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:04.767Z",
+            "data": "Epoch 4/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:04.767Z",
+            "data": "120/120 - 1s - loss: 0.3727 - accuracy: 0.8469 - val_loss: 0.3758 - val_accuracy: 0.8270 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:03.767Z",
+            "data": "Epoch 3/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:03.767Z",
+            "data": "120/120 - 1s - loss: 0.4150 - accuracy: 0.8197 - val_loss: 0.4208 - val_accuracy: 0.8386 - 1s/epoch - 11ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:02.766Z",
+            "data": "Epoch 2/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:01.766Z",
+            "data": "120/120 - 2s - loss: 0.4954 - accuracy: 0.7664 - val_loss: 0.4357 - val_accuracy: 0.7767 - 2s/epoch - 17ms/step\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:00.766Z",
+            "data": "Epoch 1/30\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:00.766Z",
+            "data": "Using batch size: 32\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:00.766Z",
+            "data": "\nTraining model...\nTraining on 3815 inputs, validating on 954 inputs\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:12:00.766Z",
+            "data": "Splitting data into training and validation sets OK\n",
+            "logLevel": "info"
+        },
+        {
+            "created": "2024-12-17T06:11:59.763Z",
+            "data": "Splitting data into training and validation sets...\n",
+            "logLevel": "info"
+        }
+    ],
+    "totalCount": 354
+}
