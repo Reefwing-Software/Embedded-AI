@@ -1,144 +1,100 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2025 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
-#
-# Used for battery SOC training data
-# GPR with custom Exponential Kernel.
 
-from sklearn.gaussian_process.kernels import Kernel, Hyperparameter
-from sklearn.utils.validation import check_array
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import ConstantKernel as C
-from sklearn.model_selection import GridSearchCV
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
-from scipy.optimize import fmin_l_bfgs_b
-
-import numpy as np
+import os
 import pandas as pd
-import joblib, os, time
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+from tensorflow.keras import layers, models
+from sklearn.model_selection import train_test_split
 
-# Define the hyperparameters in a configuration dictionary for Trial 6
-config = {
-    'trial': 6,
-    'initial_constant_value': 0.079056,  # Squared value of 0.281
-    'constant_bounds': (0.01, 1.0),  # Same bounds to allow exploration
-    'initial_length_scales': [0.01, 0.05, 0.1],  # Avoiding very small initial values
-    'length_scale_bounds': (0.01, 1.0),  # Adjusting bounds to avoid near-zero values
-    'max_iter': 30000,  # Keeping high to allow thorough optimization
-    'n_restarts_optimizer': 15,  # Same number of restarts for robustness
-    'cv_folds': 5,  # Keeping the same cross-validation folds
-    'standardize': True  # Continue standardizing the data
-}
+# Specify the path to the .otf font file (update with your specific font path)
+font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaStd_forAUart/FuturaStd-Book.otf')
+prop = fm.FontProperties(fname=font_path, size=12)
 
-class ExponentialKernel(Kernel):
-    def __init__(self, length_scale, length_scale_bounds):
-        self.length_scale = length_scale
-        self.length_scale_bounds = length_scale_bounds
+# Define the image folder and file name
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_5")
+image_name = 'f05006.pdf'
+image_path = os.path.join(image_folder, image_name)
 
-    @property
-    def hyperparameter_length_scale(self):
-        return Hyperparameter("length_scale", "numeric", self.length_scale_bounds)
+# Define the data folder
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/Preprocessed")
+model_save_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/Model")
 
-    def __call__(self, X, Y=None, eval_gradient=False):
-        X = check_array(X)
-        if Y is None:
-            Y = X
-        dists = np.sqrt(np.sum((X[:, np.newaxis, :] - Y[np.newaxis, :, :]) ** 2, axis=2))
-        K = np.exp(-dists / self.length_scale)
-        
-        if eval_gradient:
-            if not self.hyperparameter_length_scale.fixed:
-                length_scale_gradient = (dists / (self.length_scale ** 2)) * K
-                return K, np.expand_dims(length_scale_gradient, axis=2)
-            else:
-                return K, np.empty((X.shape[0], X.shape[0], 0))
-        return K
+# Load the preprocessed data
+train_file = os.path.join(data_folder, 'train.csv')
+val_file = os.path.join(data_folder, 'val.csv')
+test_file = os.path.join(data_folder, 'test.csv')
 
-    def diag(self, X):
-        return np.ones(X.shape[0])
-
-    def is_stationary(self):
-        return True
-
-# Custom optimizer function to include max_iter
-def custom_optimizer(obj_func, initial_theta, bounds):
-    result = fmin_l_bfgs_b(obj_func, initial_theta, bounds=bounds, maxiter=config['max_iter'])
-    return result[0], result[1]
-
-# Start the timer for the complete script
-start_time = time.time()
-
-# Define the file paths
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/LGHG2@n10C_to_25degC")
-preprocessed_folder = os.path.join(data_folder, 'Preprocessed')
-model_folder = os.path.join(data_folder, 'Model')
-os.makedirs(model_folder, exist_ok=True)
-
-# Define the training data file path (preprocessed)
-train_file = os.path.join(preprocessed_folder, 'resampled_training_data.csv')
-
-# Load the training data
 train_df = pd.read_csv(train_file)
+val_df = pd.read_csv(val_file)
+test_df = pd.read_csv(test_file)
 
-# Extract features and target variable
-X_train = train_df[['Voltage', 'Current', 'Temperature', 'Average Voltage', 'Average Current']]
-y_train = train_df['SOC']
+# Separate features and labels
+X_train, y_train = train_df[['aX', 'aY', 'aZ', 'proximity']], train_df['label']
+X_val, y_val = val_df[['aX', 'aY', 'aZ', 'proximity']], val_df['label']
+X_test, y_test = test_df[['aX', 'aY', 'aZ', 'proximity']], test_df['label']
 
-# Define the GPR model with initial kernel for Trial 7
-initial_kernel = C(config['initial_constant_value'], config['constant_bounds']) * ExponentialKernel(config['initial_length_scales'][0], config['length_scale_bounds'])
-gpr = GaussianProcessRegressor(kernel=initial_kernel, optimizer=custom_optimizer, n_restarts_optimizer=config['n_restarts_optimizer'], random_state=42)
-
-# Create a pipeline with GPR
-pipeline = Pipeline([
-    ('scaler', StandardScaler() if config['standardize'] else 'passthrough'),
-    ('gpr', gpr)
+# Define the model
+model = models.Sequential([
+    layers.Input(shape=(4,)),             # Input layer for 4 features
+    layers.Dense(8, activation='relu'),   # Hidden layer with 8 neurons
+    layers.Dense(1, activation='sigmoid') # Output - binary classification
 ])
 
-# Define the hyperparameter grid to optimize
-param_grid = {
-    'gpr__kernel': [
-        C(config['initial_constant_value'], config['constant_bounds']) * ExponentialKernel(length_scale, config['length_scale_bounds'])
-        for length_scale in config['initial_length_scales']
-    ]
-}
+# Compile the model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-# Set up the grid search with cross-validation
-grid_search = GridSearchCV(pipeline, param_grid, cv=config['cv_folds'], n_jobs=-1, verbose=2)
+# Train the model
+history = model.fit(
+    X_train, y_train,
+    validation_data=(X_val, y_val),
+    epochs=30,  # Number of epochs
+    batch_size=32,  # Batch size
+    verbose=1  # Show progress
+)
 
-# Start the timer for the grid search
-grid_search_start_time = time.time()
+# Evaluate on the test set
+test_loss, test_accuracy = model.evaluate(X_test, y_test)
+print(f"Test Accuracy: {test_accuracy:.4f}")
+print(f"Test Loss: {test_loss:.4f}")
 
-# Fit the model
-grid_search.fit(X_train, y_train)
+# Save the model in the default TensorFlow format
+os.makedirs(model_save_folder, exist_ok=True)
+model_path = os.path.join(model_save_folder, "near_ear_model.keras")
+model.save(model_path)
+print(f"Model saved to {model_path}")
 
-# Print the elapsed time for grid search
-grid_search_elapsed_time = time.time() - grid_search_start_time
-grid_search_minutes, grid_search_seconds = divmod(grid_search_elapsed_time, 60)
-print(f"Grid search completed in {int(grid_search_minutes)} minutes and {grid_search_seconds:.2f} seconds")
+# Plotting accuracy and loss
+history_dict = history.history
+epochs = range(1, len(history_dict['loss']) + 1)
 
-# Output the best parameters and the corresponding score
-print(f"Best parameters found: {grid_search.best_params_}")
-print(f"Best cross-validation score: {grid_search.best_score_}")
+plt.figure(figsize=(12, 5))
 
-# Print the actual parameter values of the best model
-best_kernel = grid_search.best_estimator_.named_steps['gpr'].kernel_
-print(f"Actual parameters of the best kernel: {best_kernel}")
+# Plot accuracy
+plt.subplot(1, 2, 1)
+plt.plot(epochs, history_dict['accuracy'], label='Training Accuracy', color='black', linestyle='solid')
+plt.plot(epochs, history_dict['val_accuracy'], label='Validation Accuracy', color='grey', linestyle='dashed')
+plt.title('Accuracy vs Epoch', fontproperties=prop)
+plt.xlabel('Epoch', fontproperties=prop)
+plt.ylabel('Accuracy', fontproperties=prop)
+plt.legend(prop=prop)
+plt.grid(color='grey', linestyle='--', linewidth=0.5)
 
-# Save the best model
-model_file = os.path.join(model_folder, 'best_gpr_model.pkl')
-joblib.dump(grid_search.best_estimator_, model_file)
+# Plot loss
+plt.subplot(1, 2, 2)
+plt.plot(epochs, history_dict['loss'], label='Training Loss', color='black', linestyle='solid')
+plt.plot(epochs, history_dict['val_loss'], label='Validation Loss', color='grey', linestyle='dashed')
+plt.title('Loss vs Epoch', fontproperties=prop)
+plt.xlabel('Epoch', fontproperties=prop)
+plt.ylabel('Loss', fontproperties=prop)
+plt.legend(prop=prop)
+plt.grid(color='grey', linestyle='--', linewidth=0.5)
 
-# Print the total elapsed time for the script
-total_elapsed_time = time.time() - start_time
-total_minutes, total_seconds = divmod(total_elapsed_time, 60)
-print(f"Total script execution time: {int(total_minutes)} minutes and {total_seconds:.2f} seconds")
-
-# Print out the hyperparameters used in this trial
-print("\nHyperparameters used in this trial:")
-for key, value in config.items():
-    print(f"{key}: {value}")
-
-# Load the best model (example of how to load it later)
-# best_gpr_model = joblib.load(model_file)
+# Save and show the plot
+os.makedirs(image_folder, exist_ok=True)
+plt.tight_layout()
+plt.savefig(image_path, dpi=300, bbox_inches='tight')
+plt.show()
