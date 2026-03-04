@@ -17,8 +17,8 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_10_final")
-image_name = 'f10001.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_9_v3")
+image_name = 'f09001.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Create a synthetic ground truth signal

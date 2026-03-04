@@ -3,23 +3,9 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-/******************************************************************
-  @file       pick_and_place.ino
-  @brief      6-DOF Robot Arm pick and place motion
-  @author     David Such
-  @copyright  Please see the accompanying LICENSE file.
-
-  Code:        David Such
-  Version:     1.0.0
-  Date:        17/05/25
-
-  1.0.0 Original Release.                         17/05/25
-
-  A sketch for the Arduino UNO to drive a Pololu Maestro 6-channel
-  servo controller for control of a 6-DOF robot arm in a pick and
-  place motion. 
-
-******************************************************************/
+// Sketch c09004.ino
+// Build Step 2: Create Movement Routines
+// The Nominal Sample
 
 #include <PololuMaestro.h>
 

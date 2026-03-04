@@ -1,7 +1,10 @@
-// Copyright (c) 2025 David Such
+// Copyright (c) 2026 David Such
 // 
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
+
+// Sketch c09002.ino
+// Build Step 1: Control the Arm
 
 #include <PololuMaestro.h>
 

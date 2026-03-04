@@ -1,7 +1,10 @@
-// Copyright (c) 2025 David Such
+// Copyright (c) 2026 David Such
 // 
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
+
+// Sketch c09001.ino
+// Why you don't use the SoftwareSerial library explanation
 
 #include <AltSoftSerial.h>
 

@@ -1,18 +1,11 @@
-// Copyright (c) 2025 David Such
+// Copyright (c) 2026 David Such
 // 
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-/******************************************************************
-  @file       arm_anomaly.ino
-  @brief      6-DOF Robot Arm pick and place motion with random anomaly simulation
-  @author     David Such
-  @version    1.1.0
-  @date       26/05/25
-
-  This version introduces simulated anomalies by randomly halting
-  the robot arm during different phases of the pick and place cycle.
-******************************************************************/
+// Sketch c09005.ino
+// Build Step 2: Create Movement Routines
+// The Anomaly Sample
 
 #include <PololuMaestro.h>
 
