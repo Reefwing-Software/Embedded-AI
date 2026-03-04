@@ -2,7 +2,7 @@
 
 # Embedded AI — Code Repository
 
-Welcome to the official GitHub repository for **_Embedded AI: Intelligence at the Deep Edge_**, published by **No Starch Press**.
+Welcome to the official GitHub repository for **_Embedded AI: Run at the Edge_**, published by **No Starch Press**.
 
 This repository contains all of the source code, data files, and project examples used throughout the book. Each chapter includes practical, hands-on projects designed to help you understand and implement artificial intelligence on embedded hardware platforms — from simple microcontrollers to advanced edge processors.
 
@@ -10,23 +10,23 @@ This repository contains all of the source code, data files, and project example
 
 ## About the Book
 
-**_Embedded AI: Intelligence at the Deep Edge_** explores how artificial intelligence can run efficiently on small, resource-constrained devices. You’ll learn how to combine embedded systems engineering with modern AI and machine learning techniques to create smart, autonomous, and connected products.
+**_Embedded AI: Run at the Edge_** explores how artificial intelligence can run efficiently on small, resource-constrained devices. You’ll learn how to combine embedded systems engineering with modern AI and machine learning techniques to create smart, autonomous, and connected products.
 
 **Publisher:** No Starch Press  
 **Author:** David Such  
-**Publication Date:** 2025  
+**Publication Date:** 2026  
 **ISBN:** _TBA_
 
 ---
 
 ## Who is This Book For?
 
-**_Embedded AI: Intelligence at the Deep Edge_** is written for engineers, makers, students, and technical enthusiasts who want to bring **machine learning and artificial intelligence to embedded systems**.  
+**_Embedded AI: Run at the Edge_** is written for engineers, makers, students, and technical enthusiasts who want to bring **machine learning and artificial intelligence to embedded systems**.  
 
 If you're building **smart sensors, intelligent robots, drones, or microcontroller-powered AI projects**, this book will guide you through both the theory and the practice. It strikes a balance between **hands-on engineering** and **conceptual understanding**, explaining not just _how_ to build things, but _why_ they work the way they do.
 
 ### Intended Audience
-- **Engineers and Makers** expanding from basic Arduino or Raspberry Pi projects into AI-powered systems.  
+- **Engineers and Makers** expanding from basic Arduino, STM32, or Raspberry Pi projects into AI-powered systems.  
 - **Students** in electrical engineering, computer science, robotics, or AI looking for practical projects to complement their coursework.  
 - **Developers** interested in learning how to optimize and deploy ML models on constrained edge devices.  
 - **Educators and STEM enthusiasts** exploring an interdisciplinary mix of electronics, programming, control systems, and cognitive theory.
@@ -75,25 +75,25 @@ The Table below summarizes the **primary hardware platforms** used across all ch
 
 | Chapter | Section / Project                               | Board / Platform                                   | Additional Components                                                                                                      |
 |----------|--------------------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| 3        | Super Loops                                     | Arduino UNO R3                                     | —                                                                                                                          |
-| 3        | Project: Building a Signal Generator            | Raspberry Pi Pico (RP2040)                         | Makerverse 10-bit R-2R DAC, Breadboard                                                                                     |
-| 4        | Project: SOC with Lookup Table                  | Arduino UNO R3                                     | 3S LiPo Battery, Breadboard                                                                                                |
-| 4        | Project: SOC with Machine Learning              | Arduino UNO R3                                     | 3S LiPo Battery, Breadboard                                                                                                |
-| 5        | Project: Proximity Detection using ANNs         | Arduino Nano 33 BLE Sense Rev 2                    | —                                                                                                                          |
-| 5        | Project: Person Detection using CNN             | Arduino Nicla Vision                               | —                                                                                                                          |
-| 7        | Project: Compressed Sensing                     | Arduino UNO R3                                     | DHT11 Temperature Sensor                                                                                                   |
-| 7        | Project: Sensor Orientation using FSM           | ST ISM330BX 6-axis IMU (MKI245KA)                  | STM32F401VE Motherboard (MKI109V3)                                                                                        |
-| 8        | Converting G-force to an Angle                  | Arduino Nano 33 BLE Sense Rev 1                    | —                                                                                                                          |
-| 8        | Project: Comparing Accelerometer Formulas       | Arduino Nano 33 BLE Sense Rev 1                    | Breadboard                                                                                                                 |
-| 9        | Sensor Fusion                                   | Arduino Nano 33 BLE Sense Rev 2                    | —                                                                                                                          |
-| 9        | Project: Filter Testing                         | Arduino Nano 33 BLE Sense Rev 1                    | MPU6050 IMU (GY-521), Breadboard, Arduino Nano v3                                                                          |
-| 9        | Embedded Sensor Fusion                          | STM32F401VE Motherboard (MKI109V3)                 | ST ISM330BX 6-axis IMU (MKI245KA)                                                                                         |
-| 10       | Sensor Machine Learning                         | STM32F401VE Motherboard (MKI109V3)                 | ST ISM330BX 6-axis IMU (MKI245KA)                                                                                         |
-| 10       | Project: Robot Arm Anomaly Detection            | Arduino UNO R3                                     | 6-DOF robot arm, Pololu Maestro 6-channel servo controller, 5 V 15 A regulated power supply                                |
-| 11       | Project: Real-time Audio Noise Suppression      | Raspberry Pi Pico 2 (RP2350)                       | DFRobot DFR0664 2.0” LCD, Reefwing Noise Suppression carrier board                                                         |
-| 12       | Project: AI MIDI Synthesizer                    | Raspberry Pi Pico (RP2040)                         | Reefwing Pico MIDI Keyboard PCB, Reefwing VS1053 Synthesizer PCB                                                           |
-| 13       | Project: Hot Word Detection                     | Arduino Nicla Voice                                | —                                                                                                                          |
-| 14       | Project: Battery Monitor and Logging            | Arduino UNO R4 Minima                              | 1100 mAh LiPo Battery, Reefwing Battery Monitor Shield, Reefwing Display & Logging Shield, 0.96” OLED, microSD Breakout    |
+| 2        | Super Loops                                     | Arduino UNO R3                                     | —                                                                                                                          |
+| 2        | Project: Building a Signal Generator            | Raspberry Pi Pico (RP2040)                         | Makerverse 10-bit R-2R DAC, Breadboard                                                                                     |
+| 3        | Project: SOC with Lookup Table                  | Arduino UNO R3                                     | 3S LiPo Battery, Breadboard                                                                                                |
+| 3        | Project: SOC with Machine Learning              | Arduino UNO R3                                     | 3S LiPo Battery, Breadboard                                                                                                |
+| 4        | Project: Proximity Detection using ANNs         | Arduino Nano 33 BLE Sense Rev 2                    | —                                                                                                                          |
+| 4        | Project: Person Detection using CNN             | Arduino Nicla Vision                               | —                                                                                                                          |
+| 6        | Project: Compressed Sensing                     | Arduino UNO R3                                     | DHT11 Temperature Sensor                                                                                                   |
+| 6        | Project: Sensor Orientation using FSM           | ST ISM330BX 6-axis IMU (MKI245KA)                  | STM32F401VE Motherboard (MKI109V3)                                                                                        |
+| 7        | Converting G-force to an Angle                  | Arduino Nano 33 BLE Sense Rev 1                    | —                                                                                                                          |
+| 7        | Project: Comparing Accelerometer Formulas       | Arduino Nano 33 BLE Sense Rev 1                    | Breadboard                                                                                                                 |
+| 8        | Sensor Fusion                                   | Arduino Nano 33 BLE Sense Rev 2                    | —                                                                                                                          |
+| 8        | Project: Filter Testing                         | Arduino Nano 33 BLE Sense Rev 1                    | MPU6050 IMU (GY-521), Breadboard, Arduino Nano v3                                                                          |
+| 8        | Embedded Sensor Fusion                          | STM32F401VE Motherboard (MKI109V3)                 | ST ISM330BX 6-axis IMU (MKI245KA)                                                                                         |
+| 9       | Sensor Machine Learning                         | STM32F401VE Motherboard (MKI109V3)                 | ST ISM330BX 6-axis IMU (MKI245KA)                                                                                         |
+| 9       | Project: Robot Arm Anomaly Detection            | Arduino UNO R3                                     | 6-DOF robot arm, Pololu Maestro 6-channel servo controller, 5 V 15 A regulated power supply                                |
+| 10       | Project: Real-time Audio Noise Suppression      | Raspberry Pi Pico 2 (RP2350)                       | DFRobot DFR0664 2.0” LCD, Reefwing Noise Suppression carrier board                                                         |
+| 11       | Project: AI MIDI Synthesizer                    | Raspberry Pi Pico (RP2040)                         | Reefwing Pico MIDI Keyboard PCB, Reefwing VS1053 Synthesizer PCB                                                           |
+| 12       | Project: Hot Word Detection                     | Arduino Nicla Voice                                | —                                                                                                                          |
+| 13       | Project: Battery Monitor and Logging            | Arduino UNO R4 Minima                              | 1100 mAh LiPo Battery, Reefwing Battery Monitor Shield, Reefwing Display & Logging Shield, 0.96” OLED, microSD Breakout    |
 
 You don’t need to purchase all components in advance. Review the table, decide which projects you’d like to build first, and assemble the necessary hardware as you go.
 
@@ -109,30 +109,30 @@ A diverse set of software tools is required to complete the projects in this boo
 
 | Chapter | Section                                                       | Software                                                                                                                                                                                                 |
 |----------|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 3        | Super Loops                                                   | Arduino IDE                                                                                                                                                                                              |
-| 3        | Compiling, Uploading, and Running a Bare-metal Program        | Terminal, Text Editor, AVR-GCC, AVR-DUDE, Make                                                                                                                                                           |
-| 3        | Project: Building a Signal Generator                          | VS Code                                                                                                                                                                                                  |
-| 4        | Linear Regression                                             | Python, VS Code                                                                                                                                                                                          |
-| 4        | Project: Monitoring Battery State of Charge using a Lookup Table | Arduino IDE                                                                                                                                                                                              |
-| 4        | Project: Monitoring Battery State of Charge using Machine Learning | Python, VS Code, Scikit-learn                                                                                                                                                                            |
-| 5        | Artificial Neural Networks                                    | Python, VS Code                                                                                                                                                                                          |
-| 5        | Project: Proximity Detection using ANNs                       | Arduino IDE, Python, VS Code, xxd, TensorFlow Lite for Microcontrollers                                                                                                                                  |
-| 5        | Project: Person Detection using CNN                           | TensorFlow Lite for Microcontrollers, OpenMV IDE, Python, VS Code, Arduino IDE                                                                                                                           |
-| 5        | Project: Music Generation using an LSTM RNN                   | Python, VS Code, FluidSynth, pyFluidSynth, Mido, TensorBoard                                                                                                                                             |
-| 5        | Project: Music Generation using a GAN                         | Python, VS Code, music21                                                                                                                                                                                 |
-| 5        | Training Locally Versus in the Cloud                          | Colab                                                                                                                                                                                                    |
-| 6        | EDA                                                           | Python, VS Code, pandas, Scikit-learn                                                                                                                                                                    |
-| 7        | Project: Compressed Sensing                                   | Arduino IDE, Python, VS Code                                                                                                                                                                             |
-| 7        | Project: Sensor Orientation Using FSM                         | MEMS Studio                                                                                                                                                                                              |
-| 8        | Converting G-force to an Angle                                | Arduino IDE, Reefwing LSM9DS1 IMU Library                                                                                                                                                                |
-| 9        | Sensor Fusion                                                 | Arduino IDE, Reefwing AHRS and IMU types Library                                                                                                                                                         |
-| 9        | Project: Filter Testing                                       | Arduino IDE, CoolTerm                                                                                                                                                                                    |
-| 9        | Embedded Sensor Fusion                                        | MEMS Studio                                                                                                                                                                                              |
-| 10       | Sensor Machine Learning                                       | Arduino IDE, MEMS Studio                                                                                                                                                                                 |
-| 11       | Project: Real-time Audio Noise Suppression                    | RNNoise, VS Code, Pico SDK extension for VS Code, Make, Arm Microphone Library for Pico, Audacity, Reefwing ST7789 Library for Pico 2, CMSIS-Core, CMSIS-DSP, Terminal                                   |
-| 12       | Project: An AI MIDI Synthesizer                               | VS Code, Pico SDK extension for VS Code, TensorFlow Lite for Microcontrollers, xxd, Terminal, FluidSynth, Python, TinyUSB, Midi View                                                                    |
-| 13       | Project: Hot Word Detection                                   | Arduino IDE, Edge Impulse, Syntiant Uploader, Arduino CLI, Edge Impulse audio firmware, Netron                                                                                                           |
-| 14       | Project: Battery Monitor and Logging                          | Arduino IDE, U8g2 Display Library, CoolTerm, Python                                                                                                                                                      |
+| 2        | Super Loops                                                   | Arduino IDE                                                                                                                                                                                              |
+| 2        | Compiling, Uploading, and Running a Bare-metal Program        | Terminal, Text Editor, AVR-GCC, AVR-DUDE, Make                                                                                                                                                           |
+| 2        | Project: Building a Signal Generator                          | VS Code                                                                                                                                                                                                  |
+| 3        | Linear Regression                                             | Python, VS Code                                                                                                                                                                                          |
+| 3        | Project: Monitoring Battery State of Charge using a Lookup Table | Arduino IDE                                                                                                                                                                                              |
+| 3        | Project: Monitoring Battery State of Charge using Machine Learning | Python, VS Code, Scikit-learn                                                                                                                                                                            |
+| 4        | Artificial Neural Networks                                    | Python, VS Code                                                                                                                                                                                          |
+| 4        | Project: Proximity Detection using ANNs                       | Arduino IDE, Python, VS Code, xxd, TensorFlow Lite for Microcontrollers                                                                                                                                  |
+| 4        | Project: Person Detection using CNN                           | TensorFlow Lite for Microcontrollers, OpenMV IDE, Python, VS Code, Arduino IDE                                                                                                                           |
+| 4        | Project: Music Generation using an LSTM RNN                   | Python, VS Code, FluidSynth, pyFluidSynth, Mido, TensorBoard                                                                                                                                             |
+| 4        | Project: Music Generation using a GAN                         | Python, VS Code, music21                                                                                                                                                                                 |
+| 4        | Training Locally Versus in the Cloud                          | Colab                                                                                                                                                                                                    |
+| 5        | EDA                                                           | Python, VS Code, pandas, Scikit-learn                                                                                                                                                                    |
+| 6        | Project: Compressed Sensing                                   | Arduino IDE, Python, VS Code                                                                                                                                                                             |
+| 6        | Project: Sensor Orientation Using FSM                         | MEMS Studio                                                                                                                                                                                              |
+| 7        | Converting G-force to an Angle                                | Arduino IDE, Reefwing LSM9DS1 IMU Library                                                                                                                                                                |
+| 8        | Sensor Fusion                                                 | Arduino IDE, Reefwing AHRS and IMU types Library                                                                                                                                                         |
+| 8        | Project: Filter Testing                                       | Arduino IDE, CoolTerm                                                                                                                                                                                    |
+| 8        | Embedded Sensor Fusion                                        | MEMS Studio                                                                                                                                                                                              |
+| 9       | Sensor Machine Learning                                       | Arduino IDE, MEMS Studio                                                                                                                                                                                 |
+| 10       | Project: Real-time Audio Noise Suppression                    | RNNoise, VS Code, Pico SDK extension for VS Code, Make, Arm Microphone Library for Pico, Audacity, Reefwing ST7789 Library for Pico 2, CMSIS-Core, CMSIS-DSP, Terminal                                   |
+| 11       | Project: An AI MIDI Synthesizer                               | VS Code, Pico SDK extension for VS Code, TensorFlow Lite for Microcontrollers, xxd, Terminal, FluidSynth, Python, TinyUSB, Midi View                                                                    |
+| 12       | Project: Hot Word Detection                                   | Arduino IDE, Edge Impulse, Syntiant Uploader, Arduino CLI, Edge Impulse audio firmware, Netron                                                                                                           |
+| 13       | Project: Battery Monitor and Logging                          | Arduino IDE, U8g2 Display Library, CoolTerm, Python                                                                                                                                                      |
 
 These tools cover the full spectrum of **embedded AI development**, from compiling firmware to training and deploying machine learning models:
 
@@ -176,10 +176,11 @@ The repository is organized by source code (`src/`) and chapter folders (`ch_X/`
 ├── data/
 ├── datasheets/
 │   ├── ch_1/
-│   ├── ch_3/
+│   ├── ch_2/
 │   │   └── MCP6001 Op Amp
 │   │   └── Pico C SDK
-│   ├── ch_5/
+│   ├── ch_4/
+│   ├── ch_6/
 │   ├── ch_7/
 │   ├── ch_8/
 │   ├── ch_9/
@@ -202,8 +203,6 @@ The repository is organized by source code (`src/`) and chapter folders (`ch_X/`
     │   └── ...
     ├── ch_6/
     │   └── ...
-    └── common/
-        ├── utils/
-        ├── data/
-        └── models/
+    └── ch_7/
+        └── ...
 ```
