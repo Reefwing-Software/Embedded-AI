@@ -13,12 +13,12 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4")
-image_name = 'f04011.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_3_v6")
+image_name = 'f03011.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Define the data folder and file name
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_3")
 file_name = "battery_capacity.csv"
 file_path = os.path.join(data_folder, file_name)
 
@@ -37,7 +37,6 @@ plt.scatter(capacity, voltage_3s, color='grey', label='Data points', s=50)
 # Adding labels, title, and legend
 plt.xlabel('Capacity (%)', fontproperties=prop)
 plt.ylabel('Voltage (V)', fontproperties=prop)
-# plt.title('Battery Voltage vs Capacity', fontproperties=prop)
 plt.gca().invert_xaxis()  # Reverse the x-axis
 plt.legend(prop=prop)
 plt.grid(True, linestyle="--", linewidth=0.5)

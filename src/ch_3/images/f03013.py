@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -14,8 +14,8 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4")
-image_name = 'f04013.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_3_v6")
+image_name = 'f03013.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Create sample data

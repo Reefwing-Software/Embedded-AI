@@ -13,8 +13,8 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4")
-image_name = 'f04005.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_3_v6")
+image_name = 'f03005.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Define the linear model parameters

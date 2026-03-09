@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -62,7 +62,7 @@ def custom_optimizer(obj_func, initial_theta, bounds):
     return result[0], result[1]
 
 # File paths
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/LGHG2@n10C_to_25degC")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_3/LGHG2@n10C_to_25degC")
 preprocessed_folder = os.path.join(data_folder, 'Preprocessed')
 model_file = os.path.join(data_folder, 'Model', 'best_gpr_model.pkl')
 
@@ -122,13 +122,13 @@ axes[1].plot(test_df_limited['SOC'], test_df_limited['Voltage'], label='Actual S
 axes[1].plot(test_df_limited['Predicted_SOC'], test_df_limited['Voltage'], label='Predicted SOC', color='grey', linestyle='--')
 axes[1].set_xlabel('SOC', fontsize=12)
 axes[1].set_ylabel('Voltage (V)', fontsize=12)
-axes[1].set_title('Voltage vs SOC for 10degC dataset', fontsize=14)
+axes[1].set_title('Voltage versus SOC for 10degC dataset', fontsize=14)
 axes[1].legend(fontsize=10)
 axes[1].grid(True, linestyle='--', alpha=0.7)
 
 # Save and show plot
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4")
-image_name = 'f04020.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_3_v6")
+image_name = 'f03019.pdf'
 image_path = os.path.join(image_folder, image_name)
 plt.tight_layout()
 plt.savefig(image_path, dpi=300, bbox_inches='tight')

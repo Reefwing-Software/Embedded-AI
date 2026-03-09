@@ -13,8 +13,8 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4")
-image_name = 'f04004.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_3_v6")
+image_name = 'f03004.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Example data
@@ -46,15 +46,16 @@ for i in range(len(X)):
     plt.plot([X[i], X[i]], [Y[i], Y_fit[i]], 'k--', lw=0.8)
 
 # Adding labels and title
-plt.xlabel('X', fontproperties=prop)
-plt.ylabel('Y', fontproperties=prop)
-# plt.title('Linear Regression with MSE', fontproperties=prop)
+plt.xlabel('x', fontproperties=prop)
+plt.ylabel('y', fontproperties=prop)
 plt.legend(prop=prop)
 
 # Display the MSE on the plot
-plt.text(1, 5.5, f'Mean squared error (MSE): {mse:.2f}', fontsize=12, fontproperties=prop, color='black')
+plt.text(1, 1, f'Mean squared error (MSE): {mse:.2f}', fontsize=12, fontproperties=prop, color='black')
 
 # Save and show plot
+plt.xlim(left=0)
+plt.ylim(bottom=0)
 plt.tight_layout()
 plt.savefig(image_path, dpi=300, bbox_inches="tight")
 plt.show()

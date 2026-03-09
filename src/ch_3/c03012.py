@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -16,8 +16,8 @@ def read_mat_files(folder):
     return data
 
 # Folder paths
-train_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/LGHG2@n10C_to_25degC/Train")
-test_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/LGHG2@n10C_to_25degC/Test")
+train_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_3/LGHG2@n10C_to_25degC/Train")
+test_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_3/LGHG2@n10C_to_25degC/Test")
 
 # Create a file datastore for both the training data and the test data
 fds_train = read_mat_files(train_folder)

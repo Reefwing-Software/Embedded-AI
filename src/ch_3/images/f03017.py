@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -14,12 +14,12 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4")
-image_name = 'f04018.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_3_v6")
+image_name = 'f03017.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Define the data folder
-train_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/LGHG2@n10C_to_25degC/Train")
+train_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_3/LGHG2@n10C_to_25degC/Train")
 
 # Function to read .mat files
 def read_mat_files(folder):
@@ -76,7 +76,6 @@ plt.plot(Y_idxN10.flatten(), X_idxN10[0, :], label='-10°C', color='lightgrey', 
 # Apply font properties
 plt.xlabel('State of charge (SOC)', fontproperties=prop)
 plt.ylabel('Voltage (V)', fontproperties=prop)
-# plt.title('Voltage vs SOC over Multiple Cycles', fontproperties=prop)
 plt.gca().invert_xaxis()  # Invert the x-axis
 plt.legend(prop=prop)
 plt.grid(True, linestyle='--', linewidth=0.5)

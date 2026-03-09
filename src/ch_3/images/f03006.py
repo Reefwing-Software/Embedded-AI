@@ -13,8 +13,8 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4")
-image_name = 'f04007.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_3_v6")
+image_name = 'f03006.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Set the seed for reproducibility
@@ -32,33 +32,20 @@ Y = true_slope * X + true_intercept + noise
 # Store the data points
 data_points = np.column_stack((X, Y))
 
-# Add a column of ones to X to account for the intercept term
-X_b = np.c_[np.ones((X.shape[0], 1)), X]
-
-# Calculate the normal equation parameters
-beta = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(Y)
-
-# Display the parameters
-intercept, slope = beta
-print(f"Intercept: {intercept}")
-print(f"Slope: {slope}")
-
 # Plot the data points
-plt.figure(figsize=(10, 6))
-plt.scatter(X, Y, color='black', label='Data points')
+plt.scatter(X, Y, color='black', label='Data points with noise')
 
-# Plot the line of best fit
-Y_pred = slope * X + intercept
-plt.plot(X, Y_pred, color='grey', label='Predictions')
-
-# Update font properties
-plt.xlabel('X', fontproperties=prop)
-plt.ylabel('Y', fontproperties=prop)
-# plt.title('Predictions and Data Points', fontproperties=prop)
+# Adding labels and title using the custom font
+plt.xlabel('x', fontproperties=prop)
+plt.ylabel('y', fontproperties=prop)
+# plt.title('Generated Data', fontproperties=prop)
 plt.legend(prop=prop)
-plt.grid(True)
 
 # Save and show plot
 plt.tight_layout()
 plt.savefig(image_path, dpi=300, bbox_inches="tight")
 plt.show()
+
+# Print the first few data points to verify
+print("First 5 data points (X, Y):")
+print(data_points[:5])

@@ -6,9 +6,6 @@
 
   Code:        David Such
   Version:     1.0.0
-  Date:        07/12/24
-
-  1.0.0 Original Release.                         07/12/24
 
 ******************************************************************/
 
@@ -16,7 +13,7 @@
 #define SCALE_FACTOR 1000000  // Scaling factor for values
 
 typedef struct {
-    int32_t v_scaled; // Scaled voltage (0 to SCALE_FACTOR)
+    int32_t v_scaled;   // Scaled voltage (0 to SCALE_FACTOR)
     int32_t soc_scaled; // Scaled state of charge (0 to SCALE_FACTOR)
 } soc_lookup_t;
 

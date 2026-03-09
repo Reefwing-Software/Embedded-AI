@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -12,7 +12,7 @@ url = "https://data.mendeley.com/public-files/datasets/cp3473x7xv/files/ad7ac5c9
 
 # Output folder contains the extracted ZIP files
 # Define the image folder and file name
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/LGHG2@n10C_to_25degC")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_3/LGHG2@n10C_to_25degC")
 os.makedirs(data_folder, exist_ok=True)
 
 # Download and extract the data set

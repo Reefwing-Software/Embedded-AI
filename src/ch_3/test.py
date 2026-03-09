@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -61,7 +61,7 @@ def custom_optimizer(obj_func, initial_theta, bounds):
     return result[0], result[1]
 
 # Define file paths
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/LGHG2@n10C_to_25degC")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_3/LGHG2@n10C_to_25degC")
 preprocessed_folder = os.path.join(data_folder, 'Preprocessed')
 model_file = os.path.join(data_folder, 'Model', 'best_gpr_model.pkl')
 

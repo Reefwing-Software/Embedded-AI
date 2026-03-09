@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -41,7 +41,7 @@ def resample_and_compute_moving_averages(X, Y, step=100):
     return X_resampled, Y_resampled
 
 # Folder paths
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/LGHG2@n10C_to_25degC")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_3/LGHG2@n10C_to_25degC")
 train_folder = os.path.join(data_folder, "Train")
 test_folder = os.path.join(data_folder, "Test")
 preprocessed_folder = os.path.join(data_folder, 'Preprocessed')
