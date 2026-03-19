@@ -94,8 +94,8 @@ def play_and_visualize_midi(midi_file, duration=15):
             plt.barh(row['pitch'], width=row['end'] - row['start'], left=row['start'], color='gray', edgecolor='black')
 
         plt.xlabel('Time (s)', fontproperties=prop)
-        plt.ylabel('MIDI Note Number', fontproperties=prop)
-        plt.title(f'Piano Roll (First 20 Notes): {midi_file_name}', fontproperties=prop)
+        plt.ylabel('MIDI note number', fontproperties=prop)
+        plt.title(f'Piano roll (first 20 notes): {midi_file_name}', fontproperties=prop)
         plt.xticks(fontproperties=prop)
         plt.yticks(fontproperties=prop)
 
@@ -122,7 +122,7 @@ prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
 image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_5")
-image_name = 'f05017c.pdf'
+image_name = 'f05017d.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Create the directory if it doesn't exist

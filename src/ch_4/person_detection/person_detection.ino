@@ -3,9 +3,6 @@
 Code Modified by David Such
 
 Version:     1.0.0
-Date:        03/01/25
-
-1.0.0 Original Release.                         03/01/25
 
 A sketch for the Arduino Nicla Vision to capture a frame at QQVGA 
 resolution in RGB565, downsample it to 96x96 grayscale, and use this

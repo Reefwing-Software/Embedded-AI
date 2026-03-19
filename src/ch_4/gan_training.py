@@ -26,7 +26,7 @@ EPOCHS = 100
 SAMPLE_INTERVAL = 1
 LEARNING_RATE = 0.0002
 BETA_1 = 0.5
-OUTPUT_FOLDER = Path("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/GAN").expanduser()
+OUTPUT_FOLDER = Path("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/GAN").expanduser()
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 # Metrics
@@ -242,8 +242,8 @@ def plot_metrics(disc_loss, gen_loss, disc_acc):
     prop = fm.FontProperties(fname=font_path, size=12)
 
     # Define the image folder and file name
-    image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_5")
-    image_name = 'f05024.pdf'
+    image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4_v6")
+    image_name = 'f04018.pdf'
     image_path = os.path.join(image_folder, image_name)
 
     # Create the directory if it doesn't exist
@@ -289,7 +289,7 @@ def load_notes(file_path):
 if __name__ == "__main__":
 
     # Define the data folder and file name
-    data_folder = Path("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/maestro").expanduser()
+    data_folder = Path("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/maestro").expanduser()
     extracted_folder = data_folder / "maestro-v3.0.0"
     midi_files = list(extracted_folder.rglob("*.midi")) + list(extracted_folder.rglob("*.mid"))
     saved_notes_file = OUTPUT_FOLDER / "extracted_notes.pkl"

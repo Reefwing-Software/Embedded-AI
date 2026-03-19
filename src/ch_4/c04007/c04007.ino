@@ -1,14 +1,11 @@
 /******************************************************************
-  @file       c05008.ino
-  @brief      Grab sample RGB565 image from Nicla Vision camera
+  @file       c04007.ino
+  @brief      Grab sample greyscale image from Nicla Vision camera
   @author     David Such
   @copyright  Please see the accompanying LICENSE file.
 
   Code:        David Such
   Version:     1.0.1
-  Date:        03/01/25
-
-  1.0.0 Original Release.                         03/01/25
 
 ******************************************************************/
 
@@ -44,7 +41,7 @@ void setup() {
   Serial.println("Initializing camera...");
 
   // Initialize the camera with QQVGA resolution and grayscale pixel format
-  if (!cam.begin(CAMERA_R160x120, CAMERA_RGB565, 30)) {
+  if (!cam.begin(CAMERA_R160x120, CAMERA_GRAYSCALE, 30)) {
     Serial.println("Camera initialization failed!");
     blinkLED(10); // Blink LED 10 times to indicate error
     while (1);    // Halt execution
@@ -64,7 +61,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Capturing colour frame...");
+  Serial.println("Capturing frame...");
 
   // Capture a frame - 5000 ms is the timeout condition
   if (cam.grabFrame(frameBuffer, 5000) != 0) {
@@ -87,19 +84,17 @@ void printPythonData() {
     return;
   }
 
-  uint32_t width = 160;  // QQVGA width
+  uint32_t width = 160; // QQVGA width
   uint32_t height = 120; // QQVGA height
-  uint32_t bufferSize = 0;
+  uint32_t bufferSize = 0; // Initialize the buffer size counter
 
-  Serial.println("rgb565_image = [");
+  Serial.println("grayscale_image = [");
   for (uint32_t y = 0; y < height; y++) {
     Serial.print("  [");
     for (uint32_t x = 0; x < width; x++) {
-      // Each pixel is 2 bytes: combine the bytes to form a 16-bit RGB565 value
-      uint16_t pixel = (buffer[(y * width + x) * 2] << 8) | buffer[(y * width + x) * 2 + 1];
-      Serial.print(pixel);
+      Serial.print(buffer[y * width + x]);
       if (x < width - 1) Serial.print(", "); // Add comma between elements
-      bufferSize += 2; // Increment the buffer size counter by 2 for each pixel
+      bufferSize++; // Increment the buffer size counter
     }
     Serial.println((y < height - 1) ? "]," : "]"); // Add closing bracket and comma for all but the last row
   }

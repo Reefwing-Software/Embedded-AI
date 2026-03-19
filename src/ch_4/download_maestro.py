@@ -1,4 +1,4 @@
-# Copyright (c) 2025 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -9,7 +9,7 @@ from pathlib import Path
 import zipfile
 
 # Define the data folder and file name
-data_folder = Path("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/maestro").expanduser()
+data_folder = Path("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/maestro").expanduser()
 file_name = "maestro-v3.0.0-midi.zip"
 datasets_folder = data_folder / "datasets"  # Default subdirectory created by TensorFlow
 file_path = datasets_folder / file_name  # Adjust to match where the file is actually downloaded

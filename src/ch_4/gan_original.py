@@ -3,6 +3,7 @@
 # Source: https://github.com/masanbasa3k/Generate_Your_Own_Music/tree/main
 # 
 # Modified by: David Such
+# Copyright (c) 2026 David Such
 #
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -187,7 +188,7 @@ class GAN():
     def train(self, epochs, batch_size=128, sample_interval=50):
 
         # Define the data folder and file name
-        data_folder = Path("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/maestro").expanduser()
+        data_folder = Path("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/maestro").expanduser()
         extracted_folder = data_folder / "maestro-v3.0.0"
         midi_files = list(extracted_folder.rglob("*.midi")) + list(extracted_folder.rglob("*.mid"))
 

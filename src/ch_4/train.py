@@ -1,7 +1,9 @@
-# Copyright (c) 2025 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
+#
+# Project: Proximity Detection Using ANNs
 
 import os
 import pandas as pd
@@ -15,13 +17,13 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_5")
-image_name = 'f05006.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_4_v6")
+image_name = 'f04006.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Define the data folder
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/Preprocessed")
-model_save_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/Model")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/Preprocessed")
+model_save_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/Model")
 
 # Load the preprocessed data
 train_file = os.path.join(data_folder, 'train.csv')
@@ -75,9 +77,9 @@ plt.figure(figsize=(12, 5))
 
 # Plot accuracy
 plt.subplot(1, 2, 1)
-plt.plot(epochs, history_dict['accuracy'], label='Training Accuracy', color='black', linestyle='solid')
-plt.plot(epochs, history_dict['val_accuracy'], label='Validation Accuracy', color='grey', linestyle='dashed')
-plt.title('Accuracy vs Epoch', fontproperties=prop)
+plt.plot(epochs, history_dict['accuracy'], label='Training accuracy', color='black', linestyle='solid')
+plt.plot(epochs, history_dict['val_accuracy'], label='Validation accuracy', color='grey', linestyle='dashed')
+# plt.title('Accuracy vs Epoch', fontproperties=prop)
 plt.xlabel('Epoch', fontproperties=prop)
 plt.ylabel('Accuracy', fontproperties=prop)
 plt.legend(prop=prop)
@@ -85,9 +87,9 @@ plt.grid(color='grey', linestyle='--', linewidth=0.5)
 
 # Plot loss
 plt.subplot(1, 2, 2)
-plt.plot(epochs, history_dict['loss'], label='Training Loss', color='black', linestyle='solid')
-plt.plot(epochs, history_dict['val_loss'], label='Validation Loss', color='grey', linestyle='dashed')
-plt.title('Loss vs Epoch', fontproperties=prop)
+plt.plot(epochs, history_dict['loss'], label='Training loss', color='black', linestyle='solid')
+plt.plot(epochs, history_dict['val_loss'], label='Validation loss', color='grey', linestyle='dashed')
+# plt.title('Loss vs Epoch', fontproperties=prop)
 plt.xlabel('Epoch', fontproperties=prop)
 plt.ylabel('Loss', fontproperties=prop)
 plt.legend(prop=prop)

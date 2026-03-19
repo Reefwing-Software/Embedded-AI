@@ -1,15 +1,11 @@
 /******************************************************************
-  @file       c05004.ino
+  @file       c04004.ino
   @brief      Accelerometer and Proximity Data Capture
   @author     David Such
   @copyright  Please see the accompanying LICENSE file.
 
   Code:        David Such
   Version:     1.0.1
-  Date:        03/01/25
-
-  1.0.0 Original Release.                         03/01/25
-  1.0.1 Updated to take a sample when the space bar is pressed.
 
   This example captures data from the on-board BMI270 IMU and the APDS9960 proximity sensor.
   It takes a sample only when the space bar is pressed and displays it in CSV format on the Serial Monitor.

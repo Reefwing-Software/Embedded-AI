@@ -1,14 +1,11 @@
 /******************************************************************
-  @file       c05005.ino
+  @file       c04005.ino
   @brief      Near Ear Neural Network Prediction
   @author     David Such
   @copyright  Please see the accompanying LICENSE file.
 
   Code:        David Such
   Version:     1.0.1
-  Date:        03/01/25
-
-  1.0.0 Original Release.                         03/01/25
 
 ******************************************************************/
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2025 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -7,7 +7,7 @@ import os
 import tensorflow as tf
 
 # Define the model path
-model_save_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/Model")
+model_save_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_4/Model")
 model_path = os.path.join(model_save_folder, "near_ear_model.keras")
 
 # Load the trained Keras model
