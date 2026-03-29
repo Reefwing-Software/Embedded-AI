@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -8,7 +8,7 @@ import pandas as pd
 from scipy.stats import skew, kurtosis
 
 # Define the data folder and file name
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP/eda/Preprocessed")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/eda/Preprocessed")
 file_name = 'resampled_training_data.csv'
 file_path = os.path.join(data_folder, file_name)
 

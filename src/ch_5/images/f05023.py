@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -14,12 +14,12 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_6")
-image_name = 'f06026.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_5_v6")
+image_name = 'f05023.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Define the data folder and file name
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP/eda/Preprocessed")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/eda/Preprocessed")
 file_name = 'resampled_training_data.csv'
 file_path = os.path.join(data_folder, file_name)
 data = pd.read_csv(file_path)
@@ -76,22 +76,49 @@ num_outliers_after = count_outliers(cleaned_data['Current'])
 print(f"Number of outliers before removal: {num_outliers_before}")
 print(f"Number of outliers after removal: {num_outliers_after}")
 
-# Plot cleaned Current data against Timestamp
-plt.figure(figsize=(14, 6))
-plt.plot(cleaned_data['Timestamp'], cleaned_data['Current'], label='Cleaned Current', color='darkgray')
+# Create subplots for box plots before and after removing anomalies
+# fig, axes = plt.subplots(1, 2, figsize=(18, 6))
+
+# Box plot for Current before removing anomalies
+# axes[0].boxplot(data['Current'], vert=False)
+# axes[0].set_title('Box Plot of Current Data (Before Removing Anomalies)')
+# axes[0].set_xlabel('Current')
+
+plt.figure(figsize=(15, 6))
+
+# Box plot for Current after removing anomalies
+# axes[1].boxplot(cleaned_data['Current'], vert=False)
+# axes[1].set_title('Box Plot of Current Data (After Removing Anomalies)')
+# axes[1].set_xlabel('Current')
+
+plt.boxplot(cleaned_data['Current'], vert=False, patch_artist=True,
+            boxprops=dict(facecolor='lightgray', color='darkgray'),
+            whiskerprops=dict(color='darkgray'),
+            capprops=dict(color='darkgray'),
+            medianprops=dict(color='black'),
+            flierprops=dict(markerfacecolor='darkgray', markeredgecolor='darkgray'))
 
 # Apply the custom font properties
-plt.xlabel('Timestamp', fontproperties=prop, color='black')
-plt.ylabel('Current', fontproperties=prop, color='black')
-plt.title('Cleaned current data over time', fontproperties=prop, color='black')
-plt.legend(prop=prop, frameon=False, labelcolor='darkgray')
+plt.title('Box plot of current data (after removing anomalies)', fontproperties=prop, color='black')
+plt.xlabel('Current', fontproperties=prop, color='black')
 
-# Additional plot settings
-plt.grid(True, color='gray')
-plt.xticks(rotation=45, color='darkgray')
-plt.yticks(color='darkgray')
 plt.tight_layout()
 
 # Save the figure
 plt.savefig(image_path, dpi=300, bbox_inches='tight')
 plt.show()
+
+# Plot cleaned Current data against Timestamp
+'''
+plt.figure(figsize=(14, 6))
+plt.plot(cleaned_data['Timestamp'], cleaned_data['Current'], label='Cleaned Current')
+plt.xlabel('Timestamp')
+plt.ylabel('Current')
+plt.title('Cleaned Current Data Over Time')
+plt.legend()
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig(image_path, dpi=300, bbox_inches='tight')
+plt.show()
+'''

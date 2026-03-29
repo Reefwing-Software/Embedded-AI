@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.feature_selection import mutual_info_regression
 
 # Load the standardized data
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP/eda/Preprocessed")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/eda/Preprocessed")
 file_name = 'standardised_training_data.csv'
 file_path = os.path.join(data_folder, file_name)
 data = pd.read_csv(file_path)

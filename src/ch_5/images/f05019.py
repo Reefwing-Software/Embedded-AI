@@ -1,13 +1,12 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
 
 import os
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-from scipy import stats
+from sklearn.ensemble import IsolationForest
 import matplotlib.font_manager as fm
 
 # Specify the path to the .otf font file
@@ -15,12 +14,12 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_6")
-image_name = 'f06019.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_5_v6")
+image_name = 'f05019.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Define the data folder and file name
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP/eda/Preprocessed")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_5/eda/Preprocessed")
 file_name = 'resampled_training_data.csv'
 file_path = os.path.join(data_folder, file_name)
 data = pd.read_csv(file_path)
@@ -34,16 +33,17 @@ def count_outliers(data):
     return outliers
 
 # Extract the 'Current' column
-current_data = data['Current']
+current_data = data[['Current']]
 
-# Calculate z-scores
-z_scores = np.abs(stats.zscore(current_data))
+# Fit the Isolation Forest model
+iso_forest = IsolationForest(contamination=0.01, random_state=42)
+iso_forest.fit(current_data)
 
-# Identify anomalies (z-score threshold > 3)
-anomalies = np.where(z_scores > 3)
+# Predict anomalies
+anomalies = iso_forest.predict(current_data)
 
 # Remove anomalies
-current_data_clean = current_data.drop(anomalies[0])
+current_data_clean = current_data[anomalies == 1]
 
 # Count the number of outliers
 num_outliers_before = count_outliers(current_data)

@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -17,8 +17,8 @@ prop = fm.FontProperties(fname=font_path, size=12)
 # print(prop.get_name()) # Futura Std
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_6")
-image_name = 'f06004.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_5_v6")
+image_name = 'f05002.pdf'
 image_path = os.path.join(image_folder, image_name) 
 
 # Generate a sample signal: a combination of a low-frequency and a high-frequency component
