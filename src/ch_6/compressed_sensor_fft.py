@@ -1,4 +1,4 @@
-# Copyright (c) 2025 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -6,7 +6,7 @@
 import os
 
 # Define the data folder and file name
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_7")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_6")
 file_name = "compressed_sensor_data.txt"
 file_path = os.path.join(data_folder, file_name)
 

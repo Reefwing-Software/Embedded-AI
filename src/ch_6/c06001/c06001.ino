@@ -1,14 +1,11 @@
 /******************************************************************
-  @file       c07001.ino
+  @file       c06001.ino
   @brief      Temperature compressed sensing
   @author     David Such
   @copyright  Please see the accompanying LICENSE file
 
   Code:        David Such
   Version:     1.0.0
-  Date:        01/10/24
-
-  1.0.0     Original Release.       01/10/24
 
 ******************************************************************/
 
