@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -15,13 +15,13 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_9_final")
-image_name = 'f09007.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_8_v4")
+image_name = 'f08008.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Define the data folder and file name
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_9")
-file_name = "filterTest.txt"
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_8")
+file_name = "filterTest2.txt"
 file_path = os.path.join(data_folder, file_name)
 
 # Filter mapping
@@ -89,7 +89,7 @@ with open(file_path, 'r') as file:
 # Adjust pandas display options to show all columns
 pd.set_option("display.max_columns", None)  # Show all columns
 pd.set_option("display.width", 0)  # Automatically adjust the display width to terminal size
-pd.set_option("display.float_format", "{:.3f}".format)  # Display numbers to 3 decimal places
+pd.set_option("display.float_format", "{:.4f}".format)  # Display numbers to 3 decimal places
 
 # Convert to a DataFrame
 df = pd.DataFrame(filter_data)
@@ -133,8 +133,7 @@ df_filtered = df[df["Filter"] != "None"]
 
 # Update the number of filters for the new DataFrame
 num_filters = len(df_filtered["Filter"].unique())
-#colors = cm.Greys_r(np.linspace(0.3, 0.8, num_filters))  # Shades of grey
-colors = plt.cm.tab10(np.linspace(0, 1, num_filters))
+colors = cm.Greys_r(np.linspace(0.3, 0.8, num_filters))  # Shades of grey
 line_styles = ['-', '--', '-.', ':']  # Cyclic line styles
 
 # Plot Roll Error over Time for each filter
@@ -160,7 +159,7 @@ for idx, filter_name in enumerate(df_filtered["Filter"].unique()):
 plt.title("Roll error over time for different filters", fontproperties=prop)
 plt.xlabel("Time (s)", fontproperties=prop)
 plt.ylabel("Roll error (degrees)", fontproperties=prop)
-plt.ylim(bottom=-100, top=150)   # Set y-axis limits 
+plt.ylim(bottom=-150, top=150)   # Set y-axis limits to restrict negative roll error to -150
 plt.legend(prop=prop, loc="lower right")
 plt.grid(True, which="both", linestyle="--", linewidth=0.5)
 plt.tight_layout()
