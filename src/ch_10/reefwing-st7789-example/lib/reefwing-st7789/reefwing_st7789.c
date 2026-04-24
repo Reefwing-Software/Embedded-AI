@@ -9,7 +9,7 @@
 //
 // This modified version makes the SPI clock polarity configurable
 // and provides a simple API for drawing images.
-// Copyright (c) 2025 David Such
+// Copyright (c) 2026 David Such
 //--------------------------------------------------------------------+
 
  #include "reefwing_st7789.h"

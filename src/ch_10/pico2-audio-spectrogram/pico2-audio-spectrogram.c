@@ -5,7 +5,7 @@
 // with and without RNN noise suppression. The PDM microphone is connected 
 // to GPIO 2 (data) and GPIO 3 (clock).
 //
-// Copyright (c) 2025 David Such
+// Copyright (c) 2026 David Such
 //
 // Attributions:
 //  - Some code is derived from the ARM RNNoise & spectrogram examples for the Pico. 

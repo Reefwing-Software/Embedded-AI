@@ -10,7 +10,7 @@
 //
 // Note: Make sure to connect the PDM microphone to GPIO 2 (data) and GPIO 3 (clock).
 // 
-// Copyright (c) 2025 David Such
+// Copyright (c) 2026 David Such
 // 
 // Original License:
 // SPDX-FileCopyrightText: Copyright 2024 Arm Limited and/or its affiliates <open-source-office@arm.com>

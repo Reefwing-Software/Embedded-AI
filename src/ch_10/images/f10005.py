@@ -1,4 +1,4 @@
-# Copyright (c) 2025 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -11,8 +11,8 @@ import matplotlib.font_manager as fm
 # Font and output paths
 font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaStd_forAUart/FuturaStd-Book.otf')
 prop = fm.FontProperties(fname=font_path, size=12)
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_11_final")
-image_name = 'f11008.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_10_v3")
+image_name = 'f10005.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Generate sine wave signal from -1 to 1

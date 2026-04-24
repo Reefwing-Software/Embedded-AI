@@ -1,4 +1,4 @@
-# Copyright (c) 2025 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -24,9 +24,9 @@ windowed_signal = signal * window
 font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaStd_forAUart/FuturaStd-Book.otf')
 prop = fm.FontProperties(fname=font_path, size=12)
 
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_11_final")
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_10_v3")
 os.makedirs(image_folder, exist_ok=True)
-image_name = 'f11024.pdf'
+image_name = 'f10022.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Plotting

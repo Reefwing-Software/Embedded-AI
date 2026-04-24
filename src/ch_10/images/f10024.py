@@ -1,4 +1,4 @@
-# Copyright (c) 2025 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -16,12 +16,12 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define the image folder and file name
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_11_final")
-image_name = 'f11026.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_10_v3")
+image_name = 'f10024.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Define the local audio folder
-audio_folder = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/data/ch_11')
+audio_folder = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/data/ch_10')
 os.makedirs(audio_folder, exist_ok=True)
 
 # Download the audio sample
@@ -63,18 +63,50 @@ ax1.tick_params(axis='both', which='major', labelsize=10)
 for label in (ax1.get_xticklabels() + ax1.get_yticklabels()):
     label.set_fontproperties(prop)
 
+# Compute the spectrogram
+f, t_spec, Sxx = signal.spectrogram(
+    audio_samples, fs=audio_sample_rate, nperseg=256, noverlap=128
+)
+
+# dB scale
+Sxx_log = 10 * np.log10(Sxx + 1e-10)
+
+# Clip dynamic range
+vmax = np.percentile(Sxx_log, 99)
+vmin = vmax - 40            # was -60; narrower window = more contrast
+Sxx_clipped = np.clip(Sxx_log, vmin, vmax)
+
+# Normalise to 0..1
+Sxx_norm = (Sxx_clipped - vmin) / (vmax - vmin)
+
+# Gamma > 1 darkens the midtones (opposite direction from before, now
+# that we are using cmap='gray' where 0 = black)
+gamma = 2.0                 # was 0.6; try 1.5..2.5
+Sxx_enhanced = Sxx_norm ** gamma
+
+cax = ax2.pcolormesh(
+    t_spec * audio_sample_rate, f, Sxx_enhanced,
+    shading='auto', cmap='gray',
+    vmin=0, vmax=1
+)
+
+# Colorbar needs to map back to dB for it to be meaningful
+cbar = plt.colorbar(cax, ax=ax2, orientation='vertical')
+cbar.set_label('Normalised intensity (dB, gamma-compressed)', fontproperties=prop)
+
+# Original code for spectrogram plotting (commented out for now)
 # Compute and plot the spectrogram
-f, t_spec, Sxx = signal.spectrogram(audio_samples, fs=audio_sample_rate, nperseg=256, noverlap=128)
+# f, t_spec, Sxx = signal.spectrogram(audio_samples, fs=audio_sample_rate, nperseg=256, noverlap=128)
 
 # Plot spectrogram with greyscale
 # cax = ax2.pcolormesh(t_spec * audio_sample_rate, f, Sxx, shading='gouraud', cmap='gray')
 
-Sxx_log = 10 * np.log10(Sxx + 1e-10)  # Apply log scaling for better contrast
-cax = ax2.pcolormesh(t_spec * audio_sample_rate, f, Sxx_log, shading='gouraud', cmap='gray')
+# Sxx_log = 10 * np.log10(Sxx + 1e-10)  # Apply log scaling for better contrast
+# cax = ax2.pcolormesh(t_spec * audio_sample_rate, f, Sxx_log, shading='gouraud', cmap='gray')
 
 # Add colorbar
-cbar = plt.colorbar(cax, ax=ax2, orientation='vertical')
-cbar.set_label('Intensity (dB)', fontproperties=prop)
+# cbar = plt.colorbar(cax, ax=ax2, orientation='vertical')
+# cbar.set_label('Intensity (dB)', fontproperties=prop)
 
 # Style colorbar tick labels
 cbar.ax.tick_params(labelsize=10)
