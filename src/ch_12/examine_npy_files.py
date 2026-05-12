@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 # Define data folder and file paths
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_17/")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_12/")
 X_file = os.path.join(data_folder, "ei-hello-world-syntiant-X_training.npy")
 y_file = os.path.join(data_folder, "ei-hello-world-syntiant-y_training.npy")
 

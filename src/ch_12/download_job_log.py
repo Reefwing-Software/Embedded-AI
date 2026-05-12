@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -74,7 +74,7 @@ if __name__ == "__main__":
         exit(1)
 
     # Output file path
-    output_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_13/")
+    output_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_12/")
     os.makedirs(output_folder, exist_ok=True)
     output_file = os.path.join(output_folder, f"job_{JOB_ID}_stdout_log.txt")
 

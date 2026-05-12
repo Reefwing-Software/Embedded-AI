@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -15,7 +15,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.expanduser(
 )
 
 # Set up the data folder
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_17/keyword")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_12/keyword")
 os.makedirs(data_folder, exist_ok=True)
 
 # Initialize Google Text-to-Speech client

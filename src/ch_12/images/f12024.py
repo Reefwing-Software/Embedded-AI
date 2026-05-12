@@ -1,4 +1,4 @@
-# Copyright (c) 2024 David Such
+# Copyright (c) 2026 David Such
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -14,12 +14,12 @@ font_path = os.path.expanduser('~/Documents/GitHub/NSP-Embedded-AI/fonts/FuturaS
 prop = fm.FontProperties(fname=font_path, size=12)
 
 # Define file paths
-data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_13/")
+data_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/data/ch_12/")
 file_name = "job_27200445_stdout_log.json"  # Updated to .json
 file_path = os.path.join(data_folder, file_name)
 
-image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_13_final")
-image_name = 'f13024.pdf'
+image_folder = os.path.expanduser("~/Documents/GitHub/NSP-Embedded-AI/images/ch_12_v3")
+image_name = 'f12024.pdf'
 image_path = os.path.join(image_folder, image_name)
 
 # Initialize lists to hold data
