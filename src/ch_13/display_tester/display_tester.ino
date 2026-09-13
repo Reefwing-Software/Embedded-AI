@@ -34,7 +34,7 @@ unsigned long lastSampleTime = 0, sampleInterval = 0;
 
 DHT11 dht11(TEMP_PIN);
 StateMachine machine(3); // Create a state machine with 3 states
-RTCTime timeStamp(31, Month::OCTOBER, 2024, 10, 15, 00, DayOfWeek::THURSDAY, SaveLight::SAVING_TIME_ACTIVE);
+RTCTime timeStamp(31, Month::AUGUST, 2026, 9, 24, 00, DayOfWeek::MONDAY, SaveLight::SAVING_TIME_INACTIVE);
 LogDestination* Log::destination = nullptr;
 Log Log::logger;
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(/* rotation=*/U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
